@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  * Servlet implementation class HelloWorldWithJSP
  */
 @WebServlet("/HelloWorldWithJSP")
 public class HelloWorldWithJSP extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -30,7 +31,6 @@ public class HelloWorldWithJSP extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String persona=request.getParameter("nome")+" "+request.getParameter("cognome");
 		request.setAttribute("persona", persona);
-		
 		RequestDispatcher rd=request.getRequestDispatcher("saluta.jsp");
 		rd.forward(request, response);
 	}
