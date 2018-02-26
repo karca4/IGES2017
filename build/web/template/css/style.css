@@ -83,3 +83,9 @@ p, li, input, select, button {
 ul{
     list-style-type: none;
 }
+
+
+.formSpan {
+    text-transform: uppercase;
+    color: grey;
+}

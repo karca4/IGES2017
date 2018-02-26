@@ -39,7 +39,7 @@
                                 </a>
                                 <!-- Dropdown list -->
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Aggiungi Libro</a>
+                                    <a class="dropdown-item" href="../gestioneLibri/inserimentoLibri.jsp">Inserisci Libro</a>
                                     <a class="dropdown-item" href="#">Visualizza Prenotazioni</a>
                                     <a class="dropdown-item" href="#">Visualizza Collocazione</a>
                                    <a class="dropdown-item" href="<%=application.getContextPath()%>/autenticazione/logout">Logout</a>

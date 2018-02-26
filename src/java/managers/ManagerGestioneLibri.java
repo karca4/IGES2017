@@ -5,7 +5,11 @@
  */
 package managers;
 
-public class ManagerLibri {
+public class ManagerGestioneLibri {
+    
+    public ManagerGestioneLibri() {
+    }
+    
     
     
     
