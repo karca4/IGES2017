@@ -16,10 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import managers.ManagerAutenticazione;
 
-/**
- *
- * @author kliffom
- */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/autenticazione/login"})
 public class LoginServlet extends HttpServlet {
 
