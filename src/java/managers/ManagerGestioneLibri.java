@@ -5,10 +5,12 @@
  */
 package managers;
 
+import DAO.AutoreDAO;
 import DAO.CasaEditriceDAO;
 import DAO.CollanaDAO;
 import DAO.LibroDAO;
 import DAO.VolumeDAO;
+import entities.Autore;
 import entities.CasaEditrice;
 import entities.Collana;
 import entities.Libro;
@@ -80,4 +82,8 @@ public class ManagerGestioneLibri {
         return ceDAO.doRetriveAll();
     }
     
+    public List<Autore> getAutori(){
+        AutoreDAO aDAO = new AutoreDAO();
+        return aDAO.doRetriveAll();
+    }
 }

@@ -21,7 +21,7 @@ public class AutoreDAO extends AbstractDAO<Autore> {
                                                + "ON s.CodAutore = a.CodiceFiscale WHERE s.CodVolume = ? ";
     
     
-    private final String doRetriveAllQuery = "SELECT * FROM Autore";
+    private final String doRetriveAllQuery = "SELECT * FROM autore";
     private final String doRetriveByNomeQuery = "SELECT * FROM Autore WHERE nome = ? ";
     private final String doInsertQuery = "INSERT INTO Autore(nome) VALUES(?)";
     private final String doUpdateQuery = "UPDATE Autore SET nome = ? WHERE id = ?";
@@ -74,7 +74,7 @@ public class AutoreDAO extends AbstractDAO<Autore> {
      */
     @Override
     public List<Autore> doRetriveAll() {
-        /*List<Autore> autori = new ArrayList<>();
+        List<Autore> autori = new ArrayList<>();
         
          try (Connection con = DriverManagerConnectionPool.getConnection()) {
             PreparedStatement prst = con.prepareStatement(doRetriveAllQuery);            
@@ -83,8 +83,11 @@ public class AutoreDAO extends AbstractDAO<Autore> {
                 con.commit();
                 while (rs.next()) {
                     Autore a = new Autore();
-                    a.setId(rs.getInt("id"));
-                    a.setNome(rs.getString("nome"));
+                    a.setCodFiscale(rs.getString("CodiceFiscale"));
+                    a.setNome(rs.getString("Nome"));
+                    a.setCognome(rs.getString("Cognome"));
+                    a.setDataDiNascita(rs.getString("DataNascita"));
+                    a.setCittaResidenza(rs.getString("CittaResidenza"));
                     autori.add(a);
                 }
                 rs.close();
@@ -95,14 +98,13 @@ public class AutoreDAO extends AbstractDAO<Autore> {
             } finally{
                 DriverManagerConnectionPool.releaseConnection(con);                
                 prst.close();
+                return autori;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        */
-        
-        return null;
+        return autori;
     }
 
     /**
