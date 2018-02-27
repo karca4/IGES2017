@@ -5,8 +5,12 @@
  */
 package managers;
 
+import DAO.CollanaDAO;
 import DAO.LibroDAO;
+import DAO.VolumeDAO;
+import entities.Collana;
 import entities.Libro;
+import entities.Volume;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,6 +26,19 @@ public class ManagerGestioneLibri {
     
     public ManagerGestioneLibri(LibroDAO libroDAO) {
         this.libroDAO = libroDAO;
+    }
+    
+    public List<Collana> getCollane(){
+        List<Collana> toReturn;
+        CollanaDAO collanaDAO=new CollanaDAO();
+        toReturn=collanaDAO.doRetriveAll();
+        
+        return toReturn;
+    }
+    
+    public int insertVolume(Volume volume){
+        VolumeDAO volumeDAO = new VolumeDAO();
+        return volumeDAO.doInsert(volume);
     }
     
     /**

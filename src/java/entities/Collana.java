@@ -10,6 +10,10 @@ public class Collana {
     protected String nomeCollana;
     protected String numeroOrdineCollana;
 
+    public Collana(String nomeCollana) {
+        this.nomeCollana = nomeCollana;
+    }
+    
     public Collana(String nomeCollana, String numOrdine) {
         this.nomeCollana = nomeCollana;
         this.numeroOrdineCollana = numOrdine;
