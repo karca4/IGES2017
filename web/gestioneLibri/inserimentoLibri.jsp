@@ -3,6 +3,8 @@
     Created on : 26-feb-2018, 18.19.29
     Author     : carmine
 --%>
+<%@page import="entities.CasaEditrice"%>
+<%@page import="java.util.List"%>
 <%     
     String nomePagina = "inserimento-volume";
     String message = (String) request.getAttribute("message");
@@ -83,19 +85,27 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="editore" placeholder="Editore" class="form-control" type="text">
-                                                </div>
+                                                    <select class="form-control" name="casaEditrice">
+                                                        <option value="null" selected disabled>Scegli qui</option>
+                                                        <%
+                                                            List<CasaEditrice> caseEditrici = (List)request.getAttribute("caseEditrici");
+                                                            for(CasaEditrice ce : caseEditrici){
+                                                        %>
+                                                        <option><%=ce.getDenominazione()+" - "+ce.getCitta()%></option>
+                                                        <%
+                                                            }
+                                                        %>
+                                                    </select>
+                                                    </div>
                                             </div>
                                         </div>
-                                        <!-- Text input-->
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="cittaEditore" placeholder="Città editore" class="form-control" type="text">
-                                                </div>
+                                                <button type="button" class="btn-sm btn-secondary" onclick="alert('Casa Ed')">Nuova casa editrice</button>
                                             </div>
                                         </div>
+                                                    
+                                        
                                         <!-- Text input-->
                                         <hr>
                                         <span class="formSpan">Collana</span> <!--

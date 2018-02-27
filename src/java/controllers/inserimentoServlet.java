@@ -10,6 +10,7 @@ import entities.CasaEditrice;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +37,7 @@ public class inserimentoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         PrintWriter out=response.getWriter();
         List<CasaEditrice> caseEditrici; 
         List<Autore> autori;
@@ -51,6 +53,12 @@ public class inserimentoServlet extends HttpServlet {
         autori.forEach((a) -> {
             out.println("<br><br>"+a.getCodFiscale()+" - "+a.getCognome()+" - "+a.getNome()+" - "+a.getDataDiNascita()+" - "+a.getCittaResidenza());
         });
+        
+        request.setAttribute("caseEditrici", caseEditrici);
+        request.setAttribute("autori", autori);
+            
+        RequestDispatcher dispatcher = request.getRequestDispatcher("../gestioneLibri/inserimentoLibri.jsp");
+        dispatcher.forward(request, response);   
     }
     
 
