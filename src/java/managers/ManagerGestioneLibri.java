@@ -86,4 +86,5 @@ public class ManagerGestioneLibri {
         AutoreDAO aDAO = new AutoreDAO();
         return aDAO.doRetriveAll();
     }
+    
 }

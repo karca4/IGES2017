@@ -3,6 +3,7 @@
     Created on : 26-feb-2018, 18.19.29
     Author     : carmine
 --%>
+<%@page import="entities.Collana"%>
 <%@page import="entities.Autore"%>
 <%@page import="entities.CasaEditrice"%>
 <%@page import="java.util.List"%>
@@ -66,7 +67,7 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="durataMaxPrestito" placeholder="Durata massima del prestito" class="form-control" type="text">
+                                                    <input name="durataMaxPrestito" placeholder="Durata massima del prestito (in giorni)" class="form-control" type="number" min="1" max="60">
                                                 </div>
                                             </div>
                                         </div>
@@ -138,8 +139,18 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="collana" placeholder="Collana" class="form-control" type="text">
-                                                </div>
+                                                    <select class="form-control" name="collana">
+                                                        <option value="null" selected disabled>Scegli qui</option>
+                                                        <%
+                                                            List<Collana> collane = (List)request.getAttribute("collane");
+                                                            for(Collana c : collane){
+                                                        %>
+                                                        <option><%=c.getNomeCollana()%></option>
+                                                        <%
+                                                            }
+                                                        %>
+                                                    </select>
+                                                    </div>
                                             </div>
                                         </div>
                                         <!-- Text input-->
@@ -147,8 +158,13 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="numeroOrdineCollana" placeholder="Numero di ordine nella collana" class="form-control" type="text">
+                                                    <input name="numeroOrdineCollana" placeholder="Numero di ordine nella collana" class="form-control" type="number" min="1">
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <button type="button" class="btn-sm btn-secondary" style="width:70%" onclick="alert('Collana')">Nuova collana</button>
                                             </div>
                                         </div>
                                        

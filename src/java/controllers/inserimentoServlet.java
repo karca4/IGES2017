@@ -7,6 +7,7 @@ package controllers;
 
 import entities.Autore;
 import entities.CasaEditrice;
+import entities.Collana;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -41,21 +42,29 @@ public class inserimentoServlet extends HttpServlet {
         PrintWriter out=response.getWriter();
         List<CasaEditrice> caseEditrici; 
         List<Autore> autori;
+        List<Collana> collane;
         ManagerGestioneLibri managerGestioneLibri = new ManagerGestioneLibri();
         
         caseEditrici = managerGestioneLibri.getCaseEditrici();
+        /*
         out.println("STAMPO LE CASE EDITRICI PRESENTI NEL DB");
         for(CasaEditrice ce:caseEditrici)
             out.println("<br><br>"+ce.getDenominazione()+" - "+ce.getCitta());
+        */
         
         autori = managerGestioneLibri.getAutori();
+        /*
         out.println("<br><br><br>STAMPO GLI AUTORI PRESENTI NEL DB");
         autori.forEach((a) -> {
             out.println("<br><br>"+a.getCodFiscale()+" - "+a.getCognome()+" - "+a.getNome()+" - "+a.getDataDiNascita()+" - "+a.getCittaResidenza());
         });
+        */
+        
+        collane = managerGestioneLibri.getCollane();
         
         request.setAttribute("caseEditrici", caseEditrici);
         request.setAttribute("autori", autori);
+        request.setAttribute("collane", collane);
             
         RequestDispatcher dispatcher = request.getRequestDispatcher("../gestioneLibri/inserimentoLibri.jsp");
         dispatcher.forward(request, response);   
