@@ -12,14 +12,16 @@
     <body>
         <%@include file="../skeleton-pages/header.jsp" %>
         
+        <%@include file="../skeleton-pages/searchbarRicerca.jsp" %>
+        
         <section class="dashboard section">
             <div class="container">
                 <div class="row">
                     
                     <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
 
-                        <div class="widget dashboard-container my-adslist">                            
-                            <%@include file="../skeleton-pages/searchbar.jsp" %>
+                        <div class="widget dashboard-container my-adslist" style="position: relative; left: 250px;">                            
+                            
                             <br>
                             <h3 class="widget-header"></h3>
 
@@ -56,7 +58,7 @@
                                         <td class="product-thumb">
 
 
-                                            <img style="width:150px; height:auto" src="images/defaultBook.png" alt="images/defaultBook.png" id="book-img"></td>
+                                            <img style="width:50px; height:auto" src="images/defaultBook.png" alt="images/defaultBook.png" id="book-img"></td>
                                         <td class="product-details">
                                             <h3 class="title"><%= book.getTitolo()%> </h3>
                                             <span class="location"><strong>ISBN:</strong><%= book.getCodice()%></span>
@@ -84,7 +86,10 @@
                                                     }
                                                 %>
 
-                                                <span><strong>Editore: </strong><%= book.getDenominazioneEditore()%></span>                                               
+                                                <span><strong>Editore: </strong><%= book.getDenominazioneEditore()%></span>
+                                                </br>
+                                                <span><strong>Scaffale: </strong><%= book.getDenominazioneEditore() %> <strong>Posizione: </strong> <%= book.getDenominazioneEditore() %></span>
+                                                <h6 class="title" style="position: relative; left: 20%">Disponibile o no </h6>
 
                                         </td>                                       
                                         <td class="action" data-title="Action">
@@ -107,7 +112,7 @@
                                 }
                             %>
 
-                            <div class="row">
+                            <div class="row" style="margin-bottom: 40px; ">
                                 <div class="col-3">
                                    
 
@@ -131,4 +136,11 @@
                 </div>
             </div>
         </section>
+        
+        
+        
+        <%@include file="../skeleton-pages/footer.jsp" %>
+        
+    </body>
+</html>
                         

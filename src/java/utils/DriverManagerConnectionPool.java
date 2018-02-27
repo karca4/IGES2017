@@ -31,7 +31,7 @@ public class DriverManagerConnectionPool {
         //CAMBIATELO A SECONDA DELLE VOSTRE IMPOSTAZIONI PERÒ DOPO 
         //ESCLUDETELO DAL COMMIT
         String username = "root";
-        String password = "";
+        String password = "root";
 
         newConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, username, password);
         newConnection.setAutoCommit(false);

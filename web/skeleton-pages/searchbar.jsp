@@ -43,10 +43,10 @@
           </div>
         </header>
                 
-        <div>
+        <!--<div>
             <p id="erroreSearchLibro"></p>
             </br>
-        </div>        
+        </div>-->        
 
 <script>
     
