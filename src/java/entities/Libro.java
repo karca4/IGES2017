@@ -12,6 +12,12 @@ public class Libro extends Volume{
     
     protected String genere;
     protected String tipo;
+    
+    public Libro(String genere, String tipo, String codice, String titolo, int edizione, String dataPubblicazione, int durataMaxPrestito, String lingua, String denominazioneEditore, String cittaEditore) {
+        super(codice, titolo, edizione, dataPubblicazione, durataMaxPrestito, lingua, denominazioneEditore, cittaEditore);
+        this.genere = genere;
+        this.tipo = tipo;
+    }
 
     public Libro(String genere, String tipo, String codice, String titolo, int edizione, String dataPubblicazione, int durataMaxPrestito, String lingua, String denominazioneEditore, String cittaEditore, List<Autore> autori) {
         super(codice, titolo, edizione, dataPubblicazione, durataMaxPrestito, lingua, denominazioneEditore, cittaEditore, autori);
@@ -73,6 +79,16 @@ public class Libro extends Volume{
         this.autori = autori;
 
     }
+
+    public Collana getCollana() {
+        return collana;
+    }
+
+    public void setCollana(Collana collana) {
+        this.collana = collana;
+    }
+    
+    
 
     @Override
     public String toString() {

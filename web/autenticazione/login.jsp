@@ -1,4 +1,4 @@
-<% String nomePagina = "registrazione-utente";
+<% String nomePagina = "login";
 String message = (String) request.getAttribute("message");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

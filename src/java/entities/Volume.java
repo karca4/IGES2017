@@ -37,7 +37,7 @@ public class Volume {
         this.cittaEditore = cittaEditore;
         this.autori = autori;
     }
-
+    
     public Volume(String codice, String titolo, int edizione, String dataPubblicazione, int durataMaxPrestito, String lingua, String denominazioneEditore, String cittaEditore, Collana collana, List<Autore> autori) {
         this.codice = codice;
         this.titolo = titolo;
@@ -49,6 +49,17 @@ public class Volume {
         this.cittaEditore = cittaEditore;
         this.collana = collana;
         this.autori = autori;
+    }
+
+    public Volume(String codice, String titolo, int edizione, String dataPubblicazione, int durataMaxPrestito, String lingua, String denominazioneEditore, String cittaEditore) {
+        this.codice = codice;
+        this.titolo = titolo;
+        this.edizione = edizione;
+        this.dataPubblicazione = dataPubblicazione;
+        this.durataMaxPrestito = durataMaxPrestito;
+        this.lingua = lingua;
+        this.denominazioneEditore = denominazioneEditore;
+        this.cittaEditore = cittaEditore;
     }
 
     public Collana getCollana() {
