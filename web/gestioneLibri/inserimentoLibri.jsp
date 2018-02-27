@@ -3,6 +3,7 @@
     Created on : 26-feb-2018, 18.19.29
     Author     : carmine
 --%>
+<%@page import="entities.Autore"%>
 <%@page import="entities.CasaEditrice"%>
 <%@page import="java.util.List"%>
 <%     
@@ -101,24 +102,38 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <button type="button" class="btn-sm btn-secondary" onclick="alert('Casa Ed')">Nuova casa editrice</button>
+                                                <button type="button" class="btn-sm btn-secondary" style="width:70%" onclick="alert('Casa Ed')">Nuova casa editrice</button>
                                             </div>
                                         </div>
-                                                    
-                                        
                                         <!-- Text input-->
                                         <hr>
-                                        <span class="formSpan">Collana</span> <!--
+                                        <span class="formSpan">Autori</span> 
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <select name="collanaSelect" class="form-control">
-                                                        <option>A</option>
-                                                    </select>
+                                                    <select multiple class="form-control" name="autori">
+                                                    <option value="null" selected disabled>Scegli qui</option>
+                                                        <%
+                                                            List<Autore> autori = (List)request.getAttribute("autori");
+                                                            for(Autore a : autori){
+                                                        %>
+                                                        <option><%=a.getNome().charAt(0)+". "+a.getCognome()+" - "+a.getCodFiscale()%></option>
+                                                        <%
+                                                            }
+                                                        %>
+                                                    </select> 
                                                 </div>
                                             </div>
-                                        </div> -->
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <button type="button" class="btn-sm btn-secondary" style="width:70%" onclick="alert('Autore')">Nuovo autore</button>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <hr>
+                                        <span class="formSpan">Collana</span> 
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <div class="input-group">
