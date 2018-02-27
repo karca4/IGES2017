@@ -5,9 +5,11 @@
  */
 package managers;
 
+import DAO.CasaEditriceDAO;
 import DAO.CollanaDAO;
 import DAO.LibroDAO;
 import DAO.VolumeDAO;
+import entities.CasaEditrice;
 import entities.Collana;
 import entities.Libro;
 import entities.Volume;
@@ -70,6 +72,12 @@ public class ManagerGestioneLibri {
         }
 
         return listToReturn;
+    }
+    
+    
+    public List<CasaEditrice> getCaseEditrici(){
+        CasaEditriceDAO ceDAO = new CasaEditriceDAO();
+        return ceDAO.doRetriveAll();
     }
     
 }
