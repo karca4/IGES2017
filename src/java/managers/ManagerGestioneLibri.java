@@ -9,11 +9,15 @@ import DAO.AutoreDAO;
 import DAO.CasaEditriceDAO;
 import DAO.CollanaDAO;
 import DAO.LibroDAO;
+import DAO.ManualeDAO;
+import DAO.PeriodicoDAO;
 import DAO.VolumeDAO;
 import entities.Autore;
 import entities.CasaEditrice;
 import entities.Collana;
 import entities.Libro;
+import entities.Manuale;
+import entities.Periodico;
 import entities.Volume;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -48,6 +52,16 @@ public class ManagerGestioneLibri {
     public int insertLibro(Libro libro){
         LibroDAO lDAO = new LibroDAO();
         return lDAO.doInsert(libro);
+    }
+    
+    public int insertManuale(Manuale manuale){
+        ManualeDAO mDAO = new ManualeDAO();
+        return mDAO.doInsert(manuale);
+    }
+    
+    public int insertPeriodico(Periodico periodico){
+        PeriodicoDAO pDAO = new PeriodicoDAO();
+        return pDAO.doInsert(periodico);
     }
     
     

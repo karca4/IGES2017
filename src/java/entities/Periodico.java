@@ -5,6 +5,8 @@
  */
 package entities;
 
+import java.util.List;
+
 /**
  *
  * @author carmi
@@ -16,5 +18,50 @@ public class Periodico extends Volume{
         super(codice, titolo, edizione, dataPubblicazione, durataMaxPrestito, lingua, denominazioneEditore, cittaEditore);
         this.frequenza = frequenza;
     }
+
+    public String getFrequenza() {
+        return frequenza;
+    }
+
+    public String getCodice() {
+        return codice;
+    }
+
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public int getEdizione() {
+        return edizione;
+    }
+
+    public String getDataPubblicazione() {
+        return dataPubblicazione;
+    }
+
+    public int getDurataMaxPrestito() {
+        return durataMaxPrestito;
+    }
+
+    public String getLingua() {
+        return lingua;
+    }
+
+    public String getDenominazioneEditore() {
+        return denominazioneEditore;
+    }
+
+    public String getCittaEditore() {
+        return cittaEditore;
+    }
+
+    public Collana getCollana() {
+        return collana;
+    }
+
+    public List<Autore> getAutori() {
+        return autori;
+    }
     
+        
 }

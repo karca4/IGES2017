@@ -67,10 +67,16 @@ public class CaricaVolumeServlet extends HttpServlet {
             case "manuale":
                 String categoria = request.getParameter("categoria");
                 Manuale manuale = new Manuale(codice, titolo, edizione, dataPub, durataMaxPrestito, lingua, casaEdNome, casaEdCitta, categoria);
+                
+                index=managerGestionelibri.insertManuale(manuale);
+                System.out.println("inserimento manuale effettuato: "+index);
                 break;
             case "periodico":
                 String frequenza = request.getParameter("frequenza"); 
                 Periodico periodico = new Periodico(codice, titolo, edizione, dataPub, durataMaxPrestito, lingua, casaEdNome, casaEdCitta, frequenza);
+                
+                index=managerGestionelibri.insertPeriodico(periodico);
+                System.out.println("inserimento peridico effettuato: "+index);
                 break;
         }
         
