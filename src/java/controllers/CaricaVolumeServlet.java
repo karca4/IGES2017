@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import managers.ManagerGestioneLibri;
 
 
-@WebServlet(name = "InsertVolumeServlet", urlPatterns = {"/gestioneLibri/insert"})
-public class InsertVolumeServlet extends HttpServlet {
+@WebServlet(name = "InsertVolumeServlet", urlPatterns = {"/gestione/insert"})
+public class CaricaVolumeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +32,8 @@ public class InsertVolumeServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String message="";
+        String scelta = request.getParameter("scelta");
+        System.out.println("*********   "+scelta);
         String codice = request.getParameter("codice");
         String titolo = request.getParameter("titolo");
         int edizione = Integer.parseInt(request.getParameter("edizione"));
@@ -39,12 +41,13 @@ public class InsertVolumeServlet extends HttpServlet {
         int durataMaxPrestito = Integer.parseInt(request.getParameter("durataMaxPrestito"));
         String lingua = request.getParameter("lingua");
         Volume volume = new Volume(codice, titolo, edizione, dataPub, durataMaxPrestito, lingua, null, null, null);
-                
+        
+        /*
         ManagerGestioneLibri managerGestionelibri = new ManagerGestioneLibri();
         int index=managerGestionelibri.insertVolume(volume);
         message+="inserimento effettuato: "+index;
         System.out.println(message);
-                
+        */     
         response.sendRedirect("../skeleton-pages/index.jsp");
     }
     

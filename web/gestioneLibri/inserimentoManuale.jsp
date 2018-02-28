@@ -25,7 +25,8 @@
                       <h2>Inserimento Manuale</h2>
                             <hr>
                                 <form class="form-horizontal" action="insert" method="post" id="contact_form">
-                                    <fieldset>       
+                                    <fieldset>  
+                                        <input name="scelta" value="manuale" hidden type="text">
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <div class="col-md-12">
@@ -77,6 +78,15 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                                     <input name="lingua" required placeholder="Lingua*" class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input name="categoria" required placeholder="Categoria*" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>

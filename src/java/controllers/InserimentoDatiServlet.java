@@ -25,7 +25,7 @@ import managers.ManagerGestioneLibri;
  */
 @WebServlet(name = "inserimentoServlet", urlPatterns = {"/gestione/inserimentoLibro", "/gestione/inserimentoManuale",
                                                         "/gestione/inserimentoPeriodico"})
-public class inserimentoServlet extends HttpServlet {
+public class InserimentoDatiServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

@@ -24,7 +24,8 @@
                       <h2>Inserimento Libro</h2>
                             <hr>
                                 <form class="form-horizontal" action="insert" method="post" id="contact_form">
-                                    <fieldset>       
+                                    <fieldset>  
+                                        <input name="scelta" value="libro" hidden type="text">
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <div class="col-md-12">
@@ -76,6 +77,24 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                                     <input name="lingua" required placeholder="Lingua*" class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input name="genere" required placeholder="Genere*" class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input name="tipo" required placeholder="Tipo*" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>
