@@ -18,7 +18,8 @@ public class LibroDAO extends AbstractDAO<Libro>{
     
     private final String doRetriveByTitolo = "call ricercaLibro(?)";
     private final String doRetriveAll = "select volume.*, libro.tipo, libro.genere from libro join volume on volume.codice = libro.codvolume";
-
+    private final String doRetriveAllWithPosition = "select volume.*, libro.tipo, libro.genere, copia.* from libro join volume on volume.codice = libro.codvolume join copia on volume.Codice = copia.CodiceVolume";
+    
     @Override
     public Libro doRetriveById(Object... id) {
         
@@ -38,6 +39,7 @@ public class LibroDAO extends AbstractDAO<Libro>{
                     String isbn = rs.getString("CodVolume");
                     book.setAutori(new AutoreDAO().doRetriveByLibro(isbn));
                     book.setCollana(new CollanaDAO().doRetriveById(isbn));
+                    book.setCopie(new CopiaDAO().doRetriveAll());
                 }
                 rs.close();
                 return book;
@@ -75,7 +77,7 @@ public class LibroDAO extends AbstractDAO<Libro>{
         
         try {
             Connection con = DriverManagerConnectionPool.getConnection();
-            PreparedStatement prst = con.prepareStatement(doRetriveAll);
+            PreparedStatement prst = con.prepareStatement(doRetriveAllWithPosition);
 
             try {
                 ResultSet rs = prst.executeQuery();
@@ -83,9 +85,14 @@ public class LibroDAO extends AbstractDAO<Libro>{
                 while (rs.next()) {
                     
                     Libro book = new Libro(rs.getString("genere"), rs.getString("tipo"), rs.getString("Codice"), rs.getString("Titolo"), rs.getInt("Edizione"), rs.getString("DataPubblicazione"), rs.getInt("DurataMaxPrestito"), rs.getString("Lingua"), rs.getString("DenominazioneEditore"), rs.getString("CittaEditore"));
-                    String isbn = rs.getString("Codice");
-                    book.setAutori(new AutoreDAO().doRetriveByLibro(isbn));
+                    String isbn = rs.getString("Codice");     
+                 
+                    book.setAutori(new AutoreDAO().doRetriveByLibro(isbn)); 
+                    
+                    //System.out.println("libro:  " + book.getTitolo() + "Lista autori: " + book.getAutori());
+                    
                     book.setCollana(new CollanaDAO().doRetriveById(isbn));
+                    book.setCopie(new CopiaDAO().doRetriveAllById(isbn));
                     libri.add(book);
                 }
                 
