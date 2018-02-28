@@ -99,6 +99,34 @@ public class ManagerGestioneLibri {
         }
     }
     
+    public boolean insertAutoreDiVolume(Volume v, Autore a){
+        try{
+            Connection con = DriverManagerConnectionPool.getConnection();            
+            PreparedStatement prst = con.prepareStatement("INSERT INTO scritto(CodAutore,CodVolume)" + 
+                                                            "VALUES(?,?);",PreparedStatement.RETURN_GENERATED_KEYS);
+            
+            prst.setString(1, a.getCodFiscale());
+            prst.setString(2, v.getCodice());
+           
+            try{
+                prst.execute();
+                con.commit();
+                ResultSet rs = prst.getGeneratedKeys();
+                
+                return true;
+            } catch(SQLException e){
+                con.rollback();
+                e.printStackTrace();
+                return false;
+            } finally {
+                prst.close();
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+            
+        } catch(SQLException e){
+            return false;
+        }
+    }
     
     /**
      * Metodo che ricerca un libro nel database

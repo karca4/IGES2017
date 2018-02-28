@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import entities.Autore;
 import entities.Collana;
 import entities.Libro;
 import entities.Manuale;
@@ -89,7 +90,17 @@ public class CaricaVolumeServlet extends HttpServlet {
         }
         
         String[] autori = request.getParameterValues("autori");
-        
+        int numAutori = autori.length;
+        if(numAutori>0){
+            for(int i=0; i<numAutori;i++){
+                String autore = autori[i];
+                String[] autoreInfo = autore.split(" - ");
+                String codiceAutore = autoreInfo[1];
+                Autore a = new Autore();
+                a.setCodFiscale(codiceAutore);
+                System.out.println("inserimento dell'autore: "+managerGestionelibri.insertAutoreDiVolume(volume, a));
+            }
+        }
              
         response.sendRedirect("../skeleton-pages/index.jsp");
     }
