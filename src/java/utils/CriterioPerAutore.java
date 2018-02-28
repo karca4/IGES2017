@@ -18,7 +18,10 @@ public class CriterioPerAutore implements Criterio{
     
     @Override
     public boolean isValid(Object ob) {
+        
+        
         Libro book = (Libro) ob;
+     
         for(Autore a : book.getAutori()){
             if(a.getNome().toLowerCase().contains(autore.toLowerCase())){
                 return true;

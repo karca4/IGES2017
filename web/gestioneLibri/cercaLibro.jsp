@@ -18,10 +18,8 @@
             <div class="container">
                 <div class="row">
                     
-                    <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
+                    <div>
 
-                        <div class="widget dashboard-container my-adslist" style="position: relative; left: 250px;">                            
-                            
                             <br>
                             <h3 class="widget-header"></h3>
 
@@ -31,19 +29,20 @@
                                 if (!message.equals("correct")) {
 
                             %>
-                                <h3 class="widget-header"><%=message%></h3>
+                                <h3 class="widget-header" style="margin-left: 300px;"><%=message%></h3>
                             <%
                             } else {
                                 
                                 libri = (ArrayList<Libro>) request.getAttribute("libri");
                             %>
 
-                            <table class="table table-responsive product-dashboard-table">
+                                
+                            <table class="table table-responsive table-striped product-dashboard-table">
                                 <thead>
                                     <tr>
                                         <th>Copertina</th>
-                                        <th>Descrizione</th>                                        
-                                        <th class="text-center">Azioni</th>
+                                        <th style="padding-left: 40px;">Descrizione</th>                                        
+                                        <th style="text-align: center;">Azioni</th>
                                     </tr>
                                 </thead>
                                 <tbody>                                   
@@ -55,13 +54,14 @@
 
 
                                     <tr>
-                                        <td class="product-thumb">
+                                        <td align="center" valign="middle" class="product-thumb" style="position: relative; top: 30px; left: 10px;">
 
 
                                             <img style="width:50px; height:auto" src="images/defaultBook.png" alt="images/defaultBook.png" id="book-img"></td>
-                                        <td class="product-details">
+                                        <td align="center" valign="middle" class="product-details">
                                             <h3 class="title"><%= book.getTitolo()%> </h3>
                                             <span class="location"><strong>ISBN:</strong><%= book.getCodice()%></span>
+                                            <br/>
 
 
 
@@ -78,26 +78,35 @@
                                                     <span class="add-id"><strong style="color:rgba(0, 0, 0, 0);"></strong>
                                                     <%
                                                         }
+                                                        if(i>0){
                                                     %>
-                                                    <%=aut.getNome()%>
+                                                    <%= " - " + aut.getNome() + " " + aut.getCognome()%>
                                                 </span>
+                                                <%  }else{
+                                                %>
+                                                <%=aut.getNome() + " " + aut.getCognome()%>
+  
                                                 <%
+                                                    }
                                                         i++;
                                                     }
                                                 %>
-
+                                                
+                                                <br/>
                                                 <span><strong>Editore: </strong><%= book.getDenominazioneEditore()%></span>
                                                 </br>
-                                                <span><strong>Scaffale: </strong><%= book.getDenominazioneEditore() %> <strong>Posizione: </strong> <%= book.getDenominazioneEditore() %></span>
-                                                <h6 class="title" style="position: relative; left: 20%">Disponibile o no </h6>
+                                                <span><strong>Numero Registrazione: </strong> <%= book.getCopie().get(pageIndex).getNumeroRegistrazione() %></span>
+                                                <br/>
+                                                <span><strong>Scaffale: </strong><%= book.getCopie().get(pageIndex).getNumeroScaffale() %> <strong>Posizione: </strong> <%= book.getCopie().get(pageIndex).getPosizione() %><strong>   Disponibile: </strong><%= book.getCopie().get(pageIndex).disponibile()  %> </span>
+                                                <h6 class="title" style="position: relative; left: 20%;"> </h6>
 
                                         </td>                                       
-                                        <td class="action" data-title="Action">
+                                        <td align="center" valign="middle" class="action" data-title="Action" style="position: relative; top: 30px; right: 10px;">
                                             <div class="">
                                                 <form action="" method="GET">
                                                     <input type="hidden" name="isbn" value="<%= book.getCodice()%>">
                                                     
-                                                    <button class="btn btn-main">Dettagli</button>
+                                                    <button class="btn btn-main">Prenota</button>
                                                 </form>
                                             </div>
                                         </td>
@@ -108,33 +117,21 @@
                                     %>
                                 </tbody>
                             </table>
+     
+                            
+                            
                             <%
                                 }
                             %>
 
-                            <div class="row" style="margin-bottom: 40px; ">
-                                <div class="col-3">
-                                   
-
-                                    <a class="btn-lg btn-transparent" href="cercaLibro?searchKey=<%=request.getParameter("searchKey")%>&criterio=<%=request.getParameter("criterio")%>">Precedente</a>
-
-                                   
-                                </div>
-                                <div class="col"></div>
-                                <div class="col-3">
-                                    
-                                    <% if(libri.size() >= 3) { %>
-                                        <a class="btn-lg btn-transparent" href="cercaLibro?searchKey=<%=request.getParameter("searchKey")%>&criterio=<%=request.getParameter("criterio")%>">Successiva</a>
-                                    <% } %>
-                                </div>
-                            </div>                            
+                                                        
                         </div>
 
                     </div>
                     
                     
                 </div>
-            </div>
+            
         </section>
         
         

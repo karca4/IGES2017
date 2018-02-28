@@ -27,9 +27,6 @@
     <!-- Custom styles for this template -->
     <link href="<%=path%>css/landing-page.min.css" rel="stylesheet">
     
-    
-    
-
  
 
    <!-- JAVASCRIPTS -->

@@ -38,20 +38,13 @@ public class CercaLibroServlet extends HttpServlet {
         String searchKey = request.getParameter("searchKey");
         String criterioName = request.getParameter("criterio");
         
-        //int offset;
-        /*if(request.getParameter("offset") != null){
-            offset = Integer.parseInt(request.getParameter("offset"));
-        } else {
-            offset = 0;
-        }*/
-        
         Collection<Libro> libri = new ArrayList<>();
         //Utente bibliotecario = (Utente) request.getSession().getAttribute("bibliotecario");
         Criterio criterio = null;
         
         if (criterioName.equalsIgnoreCase("titolo")) {
             
-            System.out.println("Entro nel cerca per Titolo");
+            System.out.println("Cerca per titolo");
             
            criterio = new CriterioPerTitolo(searchKey);
             
@@ -60,7 +53,7 @@ public class CercaLibroServlet extends HttpServlet {
             criterio = new CriterioPerAutore(searchKey);
             
         } else if (criterioName.equals("editore")) {
-            
+               
             criterio = new CriterioPerEditore(searchKey);
             
         } else if (criterioName.equals("isbn")) {

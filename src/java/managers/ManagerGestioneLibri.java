@@ -56,9 +56,10 @@ public class ManagerGestioneLibri {
         int limit = 0;
         
         List<Libro> listToReturn = new ArrayList<>();
-        List<Libro> allBooks = libroDAO.doRetriveAll();    
+        List<Libro> allBooks = libroDAO.doRetriveAll();
         
-
+        System.out.println("allbo: " + allBooks);
+      
         if(allBooks == null || allBooks.isEmpty()){
             return null;
         }

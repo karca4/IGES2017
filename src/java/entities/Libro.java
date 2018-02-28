@@ -57,37 +57,6 @@ public class Libro extends Volume{
         this.tipo = tipo;
     }
     
-    public void addAutore(Autore a){
-        if(!autori.contains(a)){
-            autori.add(a);
-            a.addLibro(this);
-        }
-    }
-    
-    public void removeAutore(Autore a){
-        if(autori.contains(a)){
-            autori.remove(a);
-            a.removeLibro(this);
-        }
-    }
-    
-    public List<Autore> getAutori() {
-        return autori;
-    }
-
-    public void setAutori(List<Autore> autori) {
-        this.autori = autori;
-
-    }
-
-    public Collana getCollana() {
-        return collana;
-    }
-
-    public void setCollana(Collana collana) {
-        this.collana = collana;
-    }
-    
     
 
     @Override

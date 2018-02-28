@@ -1,8 +1,3 @@
-<%-- 
-    Document   : searchbar
-    Created on : 27-feb-2018, 8.23.22
-    Author     : umbertopicariello
---%>
 
 <header class="masthead2 text-white text-center" style="height: 400px !important;">
 
@@ -46,37 +41,37 @@
                                                                         </select>
                                                                       </div>
                                                                         <div class="form-group" style="opacity: 0.8;">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Cerca un libro..." value="">
+										<input type="text" minlength="2" id="search-main" name="searchKey" tabindex="1" class="form-control" placeholder="Cerca un libro...">
 									</div>
 									<div class="form-group" >
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3" style="margin: auto; max-width: 800px; opacity: 1.0;">
-												<input type="submit" onclick="controlloSearchLibro()" tabindex="4" class="form-control btn btn-primary" value="Cerca!">
+                                                                                            <button type="submit" class="btn  btn-lg btn-primary" onclick="controlloSearchLibro()">Cerca!</button>
 											</div>
 										</div>
 									</div>
 									
 								</form>
-								<form id="manuale-form" action="https://phpoll.com/register/process" method="post" role="form" style="display: none;">
+								<form id="manuale-form" action="<%=application.getContextPath()%>/gestioneLibri/cercaLibro" method="GET" style="display: none;">
 									<div class="form-group" style="opacity: 0.8;">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Cerca un manuale..." value="">
+										<input type="text" minlength="2" id="search-main" name="searchKey" tabindex="1" class="form-control" placeholder="Cerca un manuale...">
 									</div>
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3" style="margin: auto; max-width: 800px;">
-												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Cerca!">
+												<button type="submit" class="btn  btn-lg btn-primary" onclick="controlloSearchLibro()">Cerca!</button>
 											</div>
 										</div>
 									</div>
 								</form>
-                                                                <form id="periodico-form" action="https://phpoll.com/register/process" method="post" role="form" style="display: none;">
+                                                                <form id="periodico-form" action="<%=application.getContextPath()%>/gestioneLibri/cercaLibro" method="GET" style="display: none;">
 									<div class="form-group" style="opacity: 0.8;">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Cerca un periodico..." value="">
+										<input type="text" minlength="2" id="search-main" name="searchKey" tabindex="1" class="form-control" placeholder="Cerca un periodico...">
 									</div>
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3" style="margin: auto; max-width: 800px;">
-												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Cerca!">
+												<button type="submit" class="btn  btn-lg btn-primary" onclick="controlloSearchLibro()">Cerca!</button>
 											</div>
 										</div>
 									</div>
@@ -128,6 +123,7 @@
 <script>
     
     function controlloSearchLibro() {
+        
         var boolean = true;
         var titolo = document.getElementById("idTitolo");
         var autore = document.getElementById("idAutore");

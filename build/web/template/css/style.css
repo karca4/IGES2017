@@ -1,6 +1,7 @@
 /*=== MEDIA QUERY ===*/
 
 
+
 p, li, input, select, button {
   font-family: "Muli", sans-serif;
   color: #666;
@@ -193,3 +194,29 @@ ul{
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+
+tr {
+width: 50%;
+display: inline-table;
+}
+
+table{
+ height:300px; 
+}
+
+thead{
+    width: 100%;
+    font-size: 24px;
+    position: absolute;
+    left: 300px;
+}
+
+tbody{
+  overflow-y: scroll;
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  left: 300px;
+  margin-top: 60px;
+}
+

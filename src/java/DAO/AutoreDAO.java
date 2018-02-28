@@ -17,8 +17,7 @@ import java.util.List;
 public class AutoreDAO extends AbstractDAO<Autore> {
 
     private final String doRetriveByNomeCognomeQuery = "Call RicercaAutore(?,?)";
-    private final String doRetriveByLibroQuery = "SELECT * FROM scritto s JOIN autore a "
-                                               + "ON s.CodAutore = a.CodiceFiscale WHERE s.CodVolume = ? ";
+    private final String doRetriveByLibroQuery = "SELECT * FROM scritto JOIN autore ON scritto.CodAutore = autore.CodiceFiscale WHERE scritto.CodVolume =?";
     
     
     private final String doRetriveAllQuery = "SELECT * FROM autore";
@@ -113,17 +112,22 @@ public class AutoreDAO extends AbstractDAO<Autore> {
      * @return la lista di autori del libro, una lista vuota altrimenti.
      */
     public List<Autore> doRetriveByLibro(String isbn) {
+        
         List<Autore> autori = new ArrayList<>();
         
-        try (Connection con = DriverManagerConnectionPool.getConnection()) {
+         try (Connection con = DriverManagerConnectionPool.getConnection()) {
             PreparedStatement prst = con.prepareStatement(doRetriveByLibroQuery);
-            prst.setString(1, isbn);
-
-            try (ResultSet rs = prst.executeQuery()) {
+            
+            String daPassare = isbn + "\r";//da notare
+            
+            prst.setString(1, daPassare);
+            
+             //System.out.println("query: " + prst);
+        
+            try (ResultSet rs = prst.executeQuery()) { 
                 con.commit();
                 
-                
-                while (rs.next()) {                    
+                while (rs.next()) {
                     Autore a = new Autore();
                     a.setNome(rs.getString("Nome"));
                     a.setCognome(rs.getString("Cognome"));
@@ -131,24 +135,21 @@ public class AutoreDAO extends AbstractDAO<Autore> {
                     autori.add(a);
                 }
                 rs.close();
-                
-                
+                 
             } catch (SQLException e ){
-                con.rollback();
                 e.printStackTrace();
-                
+                con.rollback();
             } finally{
                 DriverManagerConnectionPool.releaseConnection(con);                
                 prst.close();
+                return autori;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+            return autori;
         
-        
-        
-        return autori;
     }
     
     

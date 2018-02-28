@@ -19,6 +19,7 @@ public class Volume {
     protected String cittaEditore;
     protected Collana collana;
     protected List<Autore> autori;
+    protected List<Copia> copie;
 
     public Volume(String codice, String titolo, List<Autore> autori) {
         this.codice = codice;
@@ -49,6 +50,20 @@ public class Volume {
         this.cittaEditore = cittaEditore;
         this.collana = collana;
         this.autori = autori;
+    }
+    
+    public Volume(String codice, String titolo, int edizione, String dataPubblicazione, int durataMaxPrestito, String lingua, String denominazioneEditore, String cittaEditore, Collana collana, List<Autore> autori, List<Copia> copie) {
+        this.codice = codice;
+        this.titolo = titolo;
+        this.edizione = edizione;
+        this.dataPubblicazione = dataPubblicazione;
+        this.durataMaxPrestito = durataMaxPrestito;
+        this.lingua = lingua;
+        this.denominazioneEditore = denominazioneEditore;
+        this.cittaEditore = cittaEditore;
+        this.collana = collana;
+        this.autori = autori;
+        this.copie = copie;
     }
 
     public Volume(String codice, String titolo, int edizione, String dataPubblicazione, int durataMaxPrestito, String lingua, String denominazioneEditore, String cittaEditore) {
@@ -144,12 +159,24 @@ public class Volume {
         this.cittaEditore = cittaEditore;
     }
 
+    public List<Copia> getCopie() {
+        return copie;
+    }
+
+    public void setCopie(List<Copia> copie) {
+        this.copie = copie;
+    }
+    
+    
     @Override
     public String toString() {
-        if(collana!= null){
-            return "Volume{" + "codice=" + codice + ", titolo=" + titolo + ", edizione=" + edizione + ", dataPubblicazione=" + dataPubblicazione + ", durataMaxPrestito=" + durataMaxPrestito + ", lingua=" + lingua + ", denominazioneEditore=" + denominazioneEditore + ", cittaEditore=" + cittaEditore + ", autori=" + autori + ", collana= " + collana.toString() + '}';
+        if(collana!= null && autori!= null){
+            return "Volume{" + "codice=" + codice + ", titolo=" + titolo + ", edizione=" + edizione + ", dataPubblicazione=" + dataPubblicazione + ", durataMaxPrestito=" + durataMaxPrestito + ", lingua=" + lingua + ", denominazioneEditore=" + denominazioneEditore + ", cittaEditore=" + cittaEditore + ", autori=" + autori.toString() + ", collana= " + collana.toString() + "copie= " + copie.toString() + '}';
+        }else if(copie!=null){
+                        return "Volume{" + "codice=" + codice + ", titolo=" + titolo + ", edizione=" + edizione + ", dataPubblicazione=" + dataPubblicazione + ", durataMaxPrestito=" + durataMaxPrestito + ", lingua=" + lingua + ", denominazioneEditore=" + denominazioneEditore + ", cittaEditore=" + cittaEditore + ", autori=" + autori.toString() + "copie= " + copie.toString() + '}';
+
         }else{
-            return "Volume{" + "codice=" + codice + ", titolo=" + titolo + ", edizione=" + edizione + ", dataPubblicazione=" + dataPubblicazione + ", durataMaxPrestito=" + durataMaxPrestito + ", lingua=" + lingua + ", denominazioneEditore=" + denominazioneEditore + ", cittaEditore=" + cittaEditore + ", autori=" + autori + '}';
+            return "Volume{" + "codice=" + codice + ", titolo=" + titolo + ", edizione=" + edizione + ", dataPubblicazione=" + dataPubblicazione + ", durataMaxPrestito=" + durataMaxPrestito + ", lingua=" + lingua + ", denominazioneEditore=" + denominazioneEditore + ", cittaEditore=" + cittaEditore + ", autori=" + autori.toString() + '}';
         }
     }
     

@@ -14,10 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import utils.DriverManagerConnectionPool;
 
-/**
- *
- * @author carmi
- */
 public class CasaEditriceDAO extends AbstractDAO<Object>{
     private final String doRetriveAllQuery = "SELECT * FROM casaeditrice";
 
