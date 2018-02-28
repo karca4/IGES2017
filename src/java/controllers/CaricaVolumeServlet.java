@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import entities.Collana;
 import entities.Libro;
 import entities.Manuale;
 import entities.Periodico;
@@ -82,6 +83,11 @@ public class CaricaVolumeServlet extends HttpServlet {
         
         String collana = request.getParameter("collana");
         String numeroOrdineCollana = request.getParameter("numeroOrdineCollana");
+        if((collana!=null)&&(numeroOrdineCollana!=null)){
+            Collana c = new Collana(collana, numeroOrdineCollana);
+            System.out.println("inserimento nella collana: "+managerGestionelibri.insertVolumeInCollana(volume, c));
+        }
+        
         String[] autori = request.getParameterValues("autori");
         
              
