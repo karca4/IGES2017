@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import entities.Libro;
 import entities.Volume;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -33,16 +34,39 @@ public class CaricaVolumeServlet extends HttpServlet {
         
         String message="";
         String scelta = request.getParameter("scelta");
-        System.out.println("*********   "+scelta);
+        
         String codice = request.getParameter("codice");
         String titolo = request.getParameter("titolo");
         int edizione = Integer.parseInt(request.getParameter("edizione"));
         String dataPub = request.getParameter("dataPub");
         int durataMaxPrestito = Integer.parseInt(request.getParameter("durataMaxPrestito"));
         String lingua = request.getParameter("lingua");
-        Volume volume = new Volume(codice, titolo, edizione, dataPub, durataMaxPrestito, lingua, null, null, null);
+        String casaEditrice = request.getParameter("casaEditrice");
+        String casaEd[] = casaEditrice.split("-");
+        String casaEdNome = casaEd[0];
+        String casaEdCitta = casaEd[1];
         
-        /*
+        Volume volume = new Volume(codice, titolo, edizione, dataPub, durataMaxPrestito, lingua, casaEdNome, casaEdCitta);
+        
+        switch(scelta){
+            case "libro":
+                String genere = request.getParameter("genere");
+                String tipo = request.getParameter("tipo"); 
+                Libro libro = new Libro(genere, tipo, codice, titolo, edizione, dataPub, durataMaxPrestito, lingua, casaEdNome, casaEdCitta);
+                break;
+            case "manuale":
+                String categoria = request.getParameter("categoria"); 
+                break;
+            case "periodico":
+                String frequenza = request.getParameter("frequenza"); 
+                break;
+        }
+        
+        String collana = request.getParameter("collana");
+        String numeroOrdineCollana = request.getParameter("numeroOrdineCollana");
+        String[] autori = request.getParameterValues("autori");
+        
+        /* ok
         ManagerGestioneLibri managerGestionelibri = new ManagerGestioneLibri();
         int index=managerGestionelibri.insertVolume(volume);
         message+="inserimento effettuato: "+index;

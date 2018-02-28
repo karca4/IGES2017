@@ -67,7 +67,7 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="durataMaxPrestito" placeholder="Durata massima del prestito (in giorni)" class="form-control" type="number" min="1" max="60">
+                                                    <input name="durataMaxPrestito" placeholder="Durata massima del prestito (in giorni)" class="form-control" type="number" min="1">
                                                 </div>
                                             </div>
                                         </div>
