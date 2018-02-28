@@ -8,7 +8,7 @@
 <%@page import="entities.CasaEditrice"%>
 <%@page import="java.util.List"%>
 <%     
-    String nomePagina = "inserimento-volume";
+    String nomePagina = "inserimento-libro";
     String message = (String) request.getAttribute("message");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,11 +18,10 @@
 
     <body>
         <%@include file="../skeleton-pages/header.jsp" %>
-        
         <div class="container-fluid" style="padding: 30px; margin-bottom: 200px;">
                 <div class="row text-center" >               
                      <div class="bg-light col-md-4 col-md-offset-4" id="box">
-                      <h2>Inserimento libro</h2>
+                      <h2>Inserimento Libro</h2>
                             <hr>
                                 <form class="form-horizontal" action="insert" method="post" id="contact_form">
                                     <fieldset>       
@@ -127,6 +126,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <button type="button" class="btn-sm btn-secondary" style="width:70%" onclick="alert('Autore')">Nuovo autore</button>
@@ -168,7 +168,7 @@
                                             </div>
                                         </div>
                                        
-                                       <%
+                                        <%
                                         if(message!=null) {
                                         %>
                                             <div class="alert alert-danger">

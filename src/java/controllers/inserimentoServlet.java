@@ -23,7 +23,8 @@ import managers.ManagerGestioneLibri;
  *
  * @author carmi
  */
-@WebServlet(name = "inserimentoServlet", urlPatterns = {"/gestione/inserimento"})
+@WebServlet(name = "inserimentoServlet", urlPatterns = {"/gestione/inserimentoLibro", "/gestione/inserimentoManuale",
+                                                        "/gestione/inserimentoPeriodico"})
 public class inserimentoServlet extends HttpServlet {
 
     /**
@@ -65,8 +66,20 @@ public class inserimentoServlet extends HttpServlet {
         request.setAttribute("caseEditrici", caseEditrici);
         request.setAttribute("autori", autori);
         request.setAttribute("collane", collane);
-            
-        RequestDispatcher dispatcher = request.getRequestDispatcher("../gestioneLibri/inserimentoLibri.jsp");
+        
+        String path="";
+        switch(request.getServletPath()){
+            case "/gestione/inserimentoLibro":
+                path+="../gestioneLibri/inserimentoLibro.jsp";
+                break;
+            case "/gestione/inserimentoManuale":
+                path+="../gestioneLibri/inserimentoManuale.jsp";
+                break;
+            case "/gestione/inserimentoPeriodico":
+                path+="../gestioneLibri/inserimentoPeriodico.jsp";
+                break;               
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher(path);
         dispatcher.forward(request, response);   
     }
     
