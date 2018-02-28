@@ -39,7 +39,9 @@
                                 </a>
                                 <!-- Dropdown list -->
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimento">Inserisci Libro</a>
+                                    <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimentoLibro">Carica Libro</a>
+                                    <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimentoManuale">Carica Manuale</a>
+                                    <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimentoPeriodico">Carica Periodico</a>
                                     <a class="dropdown-item" href="#">Visualizza Prenotazioni</a>
                                     <a class="dropdown-item" href="#">Visualizza Collocazione</a>
                                    <a class="dropdown-item" href="<%=application.getContextPath()%>/autenticazione/logout">Logout</a>

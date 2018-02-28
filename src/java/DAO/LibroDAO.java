@@ -19,6 +19,7 @@ public class LibroDAO extends AbstractDAO<Libro>{
     private final String doRetriveByTitolo = "call ricercaLibro(?)";
     private final String doRetriveAll = "select volume.*, libro.tipo, libro.genere from libro join volume on volume.codice = libro.codvolume";
     private final String doRetriveAllWithPosition = "select volume.*, libro.tipo, libro.genere, copia.* from libro join volume on volume.codice = libro.codvolume join copia on volume.Codice = copia.CodiceVolume";
+    private final String doInsertQuery = "INSERT INTO libro(CodVolume,Genere,Tipo)" + "VALUES(?,?,?);";
     
     @Override
     public Libro doRetriveById(Object... id) {
@@ -61,8 +62,33 @@ public class LibroDAO extends AbstractDAO<Libro>{
     }
 
     @Override
-    public int doInsert(Libro entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int doInsert(Libro libro) {
+        try{
+            Connection con = DriverManagerConnectionPool.getConnection();            
+            PreparedStatement prst = con.prepareStatement(doInsertQuery,PreparedStatement.RETURN_GENERATED_KEYS);
+            
+            prst.setString(1,libro.getCodice());
+            prst.setString(2,libro.getGenere());
+            prst.setString(3,libro.getTipo());
+           
+            try{
+                prst.execute();
+                con.commit();
+                ResultSet rs = prst.getGeneratedKeys();
+                
+                return 1;
+            } catch(SQLException e){
+                con.rollback();
+                e.printStackTrace();
+                return -1;
+            } finally {
+                prst.close();
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+            
+        } catch(SQLException e){
+            return -1;
+        }
     }
 
     @Override

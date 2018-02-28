@@ -1,14 +1,15 @@
 <%-- 
-    Document   : inserimentoLibri
-    Created on : 26-feb-2018, 18.19.29
-    Author     : carmine
+    Document   : inserimentoPeriodico
+    Created on : 28-feb-2018, 10.14.13
+    Author     : carmi
 --%>
+
 <%@page import="entities.Collana"%>
 <%@page import="entities.Autore"%>
 <%@page import="entities.CasaEditrice"%>
 <%@page import="java.util.List"%>
 <%     
-    String nomePagina = "inserimento-volume";
+    String nomePagina = "inserimento-periodico";
     String message = (String) request.getAttribute("message");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,14 +19,14 @@
 
     <body>
         <%@include file="../skeleton-pages/header.jsp" %>
-        
         <div class="container-fluid" style="padding: 30px; margin-bottom: 200px;">
                 <div class="row text-center" >               
                      <div class="bg-light col-md-4 col-md-offset-4" id="box">
-                      <h2>Inserimento libro</h2>
+                      <h2>Inserimento Periodico</h2>
                             <hr>
                                 <form class="form-horizontal" action="insert" method="post" id="contact_form">
-                                    <fieldset>       
+                                    <fieldset> 
+                                        <input name="scelta" value="periodico" hidden type="text">
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <div class="col-md-12">
@@ -81,6 +82,15 @@
                                             </div>
                                         </div>
                                         <!-- Text input-->
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                    <input name="frequenza" required placeholder="Frequenza*" class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
                                         <hr>
                                         <span class="formSpan">Casa editrice</span>
                                         <div class="form-group">
@@ -127,6 +137,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <button type="button" class="btn-sm btn-secondary" style="width:70%" onclick="alert('Autore')">Nuovo autore</button>
@@ -168,7 +179,7 @@
                                             </div>
                                         </div>
                                        
-                                       <%
+                                        <%
                                         if(message!=null) {
                                         %>
                                             <div class="alert alert-danger">
