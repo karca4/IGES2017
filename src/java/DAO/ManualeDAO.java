@@ -19,10 +19,42 @@ import utils.DriverManagerConnectionPool;
  */
 public class ManualeDAO extends AbstractDAO<Manuale>{
     private final String doInsertQuery = "INSERT INTO manuale(CodVolume,Categoria)" + "VALUES(?,?);";
+    private final String doRetriveByTitoloQuery = "call ricercaManuale(?)";
 
     @Override
     public Manuale doRetriveById(Object... id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        String titolo = (String) id[0];
+        
+        try {
+            Connection con = DriverManagerConnectionPool.getConnection();
+            PreparedStatement prst = con.prepareStatement(doRetriveByTitoloQuery);
+            prst.setString(1, titolo);
+
+            try {
+                ResultSet rs = prst.executeQuery();
+                con.commit();
+                Manuale manuale = null;
+                if (rs.next()) {
+                    manuale = new Manuale(rs.getString("CodVolume"), rs.getString("Titolo"), rs.getInt("Edizione"), rs.getString("DataPubblicazione"), rs.getInt("DurataMaxPrestito"), rs.getString("Lingua"), rs.getString("DenominazioneEditore"), rs.getString("CittaEditore"), rs.getString("Categoria"));
+                    
+                }
+                rs.close();
+                return manuale;
+
+            } catch (SQLException e) {
+                con.rollback();
+                return null;
+            } finally {
+                prst.close();
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        
     }
 
     @Override

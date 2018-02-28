@@ -7,10 +7,6 @@ package entities;
 
 import java.util.List;
 
-/**
- *
- * @author carmi
- */
 public class Periodico extends Volume{
     private String frequenza;
     

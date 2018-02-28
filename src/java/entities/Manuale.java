@@ -7,10 +7,6 @@ package entities;
 
 import java.util.List;
 
-/**
- *
- * @author carmi
- */
 public class Manuale extends Volume{
     private String categoria;
     

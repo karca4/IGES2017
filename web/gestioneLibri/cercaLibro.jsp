@@ -29,20 +29,28 @@
                                 if (!message.equals("correct")) {
 
                             %>
-                                <h3 class="widget-header" style="margin-left: 300px;"><%=message%></h3>
+                                <h3 class="widget-header" style="margin-left: 300px; margin-bottom: 100px; margin-top: 40px;"><%=message%></h3>
                             <%
                             } else {
                                 
                                 libri = (ArrayList<Libro>) request.getAttribute("libri");
                             %>
-
                                 
                             <table class="table table-responsive table-striped product-dashboard-table">
                                 <thead>
                                     <tr>
-                                        <th>Copertina</th>
-                                        <th style="padding-left: 40px;">Descrizione</th>                                        
-                                        <th style="text-align: center;">Azioni</th>
+                                        <%
+                                            if ( (request.getSession().getAttribute("bibliotecario") != null) || (request.getSession().getAttribute("persona") != null) ) {
+                                        %>
+                                            <th>Copertina</th>
+                                            <th style="padding-left: 40px;">Descrizione</th>                                        
+                                            <th style="text-align: center;">Azioni</th>
+                                        <% }else{
+                                            %>
+                                            <th>Copertina</th>
+                                            <th style="padding-left: 40px;">Descrizione</th>                                        
+                                        <% } 
+                                           %>
                                     </tr>
                                 </thead>
                                 <tbody>                                   
@@ -100,13 +108,28 @@
                                                 <span><strong>Scaffale: </strong><%= book.getCopie().get(pageIndex).getNumeroScaffale() %> <strong>Posizione: </strong> <%= book.getCopie().get(pageIndex).getPosizione() %><strong>   Disponibile: </strong><%= book.getCopie().get(pageIndex).disponibile()  %> </span>
                                                 <h6 class="title" style="position: relative; left: 20%;"> </h6>
 
-                                        </td>                                       
+                                        </td>       
+                                        <%
+                                                        if ( (request.getSession().getAttribute("bibliotecario") != null) || (request.getSession().getAttribute("persona") != null) ) {
+                                                    %>
                                         <td align="center" valign="middle" class="action" data-title="Action" style="position: relative; top: 30px; right: 10px;">
                                             <div class="">
                                                 <form action="" method="GET">
                                                     <input type="hidden" name="isbn" value="<%= book.getCodice()%>">
-                                                    
-                                                    <button class="btn btn-main">Prenota</button>
+                                                    <%}
+                                                        %>
+                                                    <%
+                                                        if (request.getSession().getAttribute("bibliotecario") != null){
+                                                    %>
+                                                        <button class="btn btn-main">Modifica</button>
+                                                    <%
+                                                        }else if (request.getSession().getAttribute("persona") != null){
+                                                    %>
+                                                        <button class="btn btn-main">Prenota</button>
+                                                    <%
+                                                        }
+                                                    %>
+                                                      
                                                 </form>
                                             </div>
                                         </td>
