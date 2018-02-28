@@ -6,6 +6,8 @@
 package controllers;
 
 import entities.Libro;
+import entities.Manuale;
+import entities.Periodico;
 import entities.Volume;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -32,9 +34,7 @@ public class CaricaVolumeServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String message="";
-        String scelta = request.getParameter("scelta");
-        
+        String scelta = request.getParameter("scelta");   //mantiene il tipo del volume scelto
         String codice = request.getParameter("codice");
         String titolo = request.getParameter("titolo");
         int edizione = Integer.parseInt(request.getParameter("edizione"));
@@ -42,23 +42,35 @@ public class CaricaVolumeServlet extends HttpServlet {
         int durataMaxPrestito = Integer.parseInt(request.getParameter("durataMaxPrestito"));
         String lingua = request.getParameter("lingua");
         String casaEditrice = request.getParameter("casaEditrice");
-        String casaEd[] = casaEditrice.split("-");
-        String casaEdNome = casaEd[0];
-        String casaEdCitta = casaEd[1];
+        String casaEdNome=null;
+        String casaEdCitta=null;
+        if(casaEditrice!=null){
+            String casaEd[] = casaEditrice.split(" - ");
+            casaEdNome = casaEd[0];
+            casaEdCitta = casaEd[1];
+        }
         
         Volume volume = new Volume(codice, titolo, edizione, dataPub, durataMaxPrestito, lingua, casaEdNome, casaEdCitta);
+        ManagerGestioneLibri managerGestionelibri = new ManagerGestioneLibri();
+        int index=managerGestionelibri.insertVolume(volume);
+        System.out.println("inserimento volume effettuato: "+index);
         
         switch(scelta){
             case "libro":
                 String genere = request.getParameter("genere");
                 String tipo = request.getParameter("tipo"); 
                 Libro libro = new Libro(genere, tipo, codice, titolo, edizione, dataPub, durataMaxPrestito, lingua, casaEdNome, casaEdCitta);
+                
+                index=managerGestionelibri.insertLibro(libro);
+                System.out.println("inserimento libro effettuato: "+index);
                 break;
             case "manuale":
-                String categoria = request.getParameter("categoria"); 
+                String categoria = request.getParameter("categoria");
+                Manuale manuale = new Manuale(codice, titolo, edizione, dataPub, durataMaxPrestito, lingua, casaEdNome, casaEdCitta, categoria);
                 break;
             case "periodico":
                 String frequenza = request.getParameter("frequenza"); 
+                Periodico periodico = new Periodico(codice, titolo, edizione, dataPub, durataMaxPrestito, lingua, casaEdNome, casaEdCitta, frequenza);
                 break;
         }
         
@@ -66,12 +78,7 @@ public class CaricaVolumeServlet extends HttpServlet {
         String numeroOrdineCollana = request.getParameter("numeroOrdineCollana");
         String[] autori = request.getParameterValues("autori");
         
-        /* ok
-        ManagerGestioneLibri managerGestionelibri = new ManagerGestioneLibri();
-        int index=managerGestionelibri.insertVolume(volume);
-        message+="inserimento effettuato: "+index;
-        System.out.println(message);
-        */     
+             
         response.sendRedirect("../skeleton-pages/index.jsp");
     }
     

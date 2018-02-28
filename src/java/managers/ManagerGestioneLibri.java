@@ -45,6 +45,12 @@ public class ManagerGestioneLibri {
         return volumeDAO.doInsert(volume);
     }
     
+    public int insertLibro(Libro libro){
+        LibroDAO lDAO = new LibroDAO();
+        return lDAO.doInsert(libro);
+    }
+    
+    
     /**
      * Metodo che ricerca un libro nel database
      *

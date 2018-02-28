@@ -18,7 +18,7 @@ public class VolumeDAO extends AbstractDAO<Volume>{
     private final String doRetriveByCodice = "Select * from Volume where Codice = ?";
     private final String doRetriveByTitolo = "Select * from volume where titolo = ?";
     private final String doRetriveAll = "Select * from volume";
-    private final String doInsertQuery = "INSERT INTO volume(Codice,Titolo,Edizione,DataPubblicazione,DurataMaxPrestito,Lingua)" + "VALUES(?,?,?,?,?,?);";
+    private final String doInsertQuery = "INSERT INTO volume(Codice,Titolo,Edizione,DataPubblicazione,DurataMaxPrestito,Lingua,DenominazioneEditore,CittaEditore)" + "VALUES(?,?,?,?,?,?,?,?);";
     
     private final String doInsertAutoreQuery = "";
     private final String doUpdateQuery = "";
@@ -76,6 +76,8 @@ public class VolumeDAO extends AbstractDAO<Volume>{
             prst.setString(4,volume.getDataPubblicazione());
             prst.setInt(5,volume.getDurataMaxPrestito());
             prst.setString(6,volume.getLingua());
+            prst.setString(7, volume.getDenominazioneEditore());
+            prst.setString(8, volume.getCittaEditore());
            
             try{
                 prst.execute();
