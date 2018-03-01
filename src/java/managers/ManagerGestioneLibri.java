@@ -171,4 +171,9 @@ public class ManagerGestioneLibri {
         return aDAO.doRetriveAll();
     }
     
+    public List<Volume> getVolumi() {
+        VolumeDAO vDAO = new VolumeDAO();
+        return vDAO.doRetriveAll();
+    }
+    
 }

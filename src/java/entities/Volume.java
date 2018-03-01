@@ -21,6 +21,10 @@ public class Volume {
     protected List<Autore> autori;
     protected List<Copia> copie;
 
+    public Volume(){
+        
+    }
+    
     public Volume(String codice, String titolo, List<Autore> autori) {
         this.codice = codice;
         this.titolo = titolo;
