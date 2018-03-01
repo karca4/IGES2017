@@ -22,7 +22,7 @@
         <div class="container-fluid" style="padding: 30px; margin-bottom: 200px;">
                 <div class="row text-center" >               
                      <div class="bg-light col-md-4 col-md-offset-4" id="box">
-                      <h2>Elimina Volume</h2>
+                      <h2>Elimina Posizionamento Volume</h2>
                       <%=request.getParameter("volumeId")%>
                             <hr>
                                 <form class="form-horizontal" action="position" method="post" id="contact_form">
