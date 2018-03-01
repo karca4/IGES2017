@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import entities.Copia;
 import entities.Volume;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,9 +39,11 @@ public class RecuperaVolumiServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         ManagerGestioneLibri managerGestioneLibri = new ManagerGestioneLibri();
-        List<Volume> volumi = managerGestioneLibri.getVolumi();
+        List<Volume> volumi = managerGestioneLibri.getVolumiNonPosizionati();
+        List<Copia> copie = managerGestioneLibri.getCopie();
         
         request.setAttribute("volumi", volumi);
+        request.setAttribute("copie", copie);
         RequestDispatcher dispatcher = request.getRequestDispatcher("../gestioneLibri/posizionamentoVolume.jsp");
         dispatcher.forward(request, response); 
     }

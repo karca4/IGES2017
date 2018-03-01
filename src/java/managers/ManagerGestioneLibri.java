@@ -8,6 +8,7 @@ package managers;
 import DAO.AutoreDAO;
 import DAO.CasaEditriceDAO;
 import DAO.CollanaDAO;
+import DAO.CopiaDAO;
 import DAO.LibroDAO;
 import DAO.ManualeDAO;
 import DAO.PeriodicoDAO;
@@ -15,6 +16,7 @@ import DAO.VolumeDAO;
 import entities.Autore;
 import entities.CasaEditrice;
 import entities.Collana;
+import entities.Copia;
 import entities.Libro;
 import entities.Manuale;
 import entities.Periodico;
@@ -174,6 +176,16 @@ public class ManagerGestioneLibri {
     public List<Volume> getVolumi() {
         VolumeDAO vDAO = new VolumeDAO();
         return vDAO.doRetriveAll();
+    }
+    
+    public List<Copia> getCopie() {
+        CopiaDAO cDAO = new CopiaDAO();
+        return cDAO.doRetriveAll();
+    }
+    
+    public List<Volume> getVolumiNonPosizionati(){
+        VolumeDAO vDAO = new VolumeDAO();
+        return vDAO.doRetriveNoPositioned();
     }
     
 }

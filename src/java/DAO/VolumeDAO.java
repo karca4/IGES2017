@@ -19,6 +19,8 @@ public class VolumeDAO extends AbstractDAO<Volume>{
     private final String doRetriveByCodice = "Select * from Volume where Codice = ?";
     private final String doRetriveByTitolo = "Select * from volume where titolo = ?";
     private final String doRetriveAllQuery = "Select * from volume";
+    private final String doRetriveAllNoPositionedQuery = "SELECT * FROM `volume` WHERE Codice NOT IN (" +
+                                                            "SELECT CodiceVolume FROM copia WHERE 1)";
     private final String doInsertQuery = "INSERT INTO volume(Codice,Titolo,Edizione,DataPubblicazione,DurataMaxPrestito,Lingua,DenominazioneEditore,CittaEditore)" + "VALUES(?,?,?,?,?,?,?,?);";
     
     private final String doInsertAutoreQuery = "";
@@ -136,6 +138,44 @@ public class VolumeDAO extends AbstractDAO<Volume>{
     @Override
     public int doUpdate(Volume entity) {
         return 0;
+    }
+    
+    
+    public List<Volume> doRetriveNoPositioned() {
+        List<Volume> volumi = new ArrayList<>();
+        
+         try (Connection con = DriverManagerConnectionPool.getConnection()) {
+            PreparedStatement prst = con.prepareStatement(doRetriveAllNoPositionedQuery);            
+
+            try (ResultSet rs = prst.executeQuery()) { 
+                con.commit();
+                while (rs.next()) {
+                    Volume v = new Volume();
+                    v.setCodice(rs.getString("Codice"));
+                    v.setTitolo(rs.getString("Titolo"));
+                    v.setEdizione(rs.getInt("Edizione"));
+                    v.setDataPubblicazione(rs.getString("DataPubblicazione"));
+                    v.setDurataMaxPrestito(rs.getInt("DurataMaxPrestito"));
+                    v.setLingua(rs.getString("Lingua"));
+                    v.setDenominazioneEditore(rs.getString("DenominazioneEditore"));
+                    v.setCittaEditore(rs.getString("CittaEditore"));   
+                    volumi.add(v);
+                }
+                rs.close();
+                
+                
+            } catch (SQLException e ){
+                con.rollback();
+            } finally{
+                DriverManagerConnectionPool.releaseConnection(con);                
+                prst.close();
+                return volumi;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return volumi;
     }
     
     

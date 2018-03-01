@@ -14,6 +14,10 @@ public class Copia {
     protected String codiceVolume;
     protected boolean disponibilita;
 
+    public Copia(){
+        
+    }
+    
     public Copia(String numeroRegistrazione, String numeroScaffale, int posizione, String codiceVolume, boolean disponibilita) {
         this.numeroRegistrazione = numeroRegistrazione;
         this.numeroScaffale = numeroScaffale;
