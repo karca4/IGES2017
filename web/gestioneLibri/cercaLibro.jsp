@@ -29,20 +29,28 @@
                                 if (!message.equals("correct")) {
 
                             %>
-                                <h3 class="widget-header" style="margin-left: 300px;"><%=message%></h3>
+                                <h3 class="widget-header" style="margin-left: 300px; margin-bottom: 100px; margin-top: 40px;"><%=message%></h3>
                             <%
                             } else {
                                 
                                 libri = (ArrayList<Libro>) request.getAttribute("libri");
                             %>
-
                                 
                             <table class="table table-responsive table-striped product-dashboard-table">
                                 <thead>
                                     <tr>
-                                        <th>Copertina</th>
-                                        <th style="padding-left: 40px;">Descrizione</th>                                        
-                                        <th style="text-align: center;">Azioni</th>
+                                        <%
+                                            if ( (request.getSession().getAttribute("bibliotecario") != null) || (request.getSession().getAttribute("persona") != null) ) {
+                                        %>
+                                            <th>Copertina</th>
+                                            <th style="padding-left: 40px;">Descrizione</th>                                        
+                                            <th style="text-align: center;">Azioni</th>
+                                        <% }else{
+                                            %>
+                                            <th>Copertina</th>
+                                            <th style="padding-left: 40px;">Descrizione</th>                                        
+                                        <% } 
+                                           %>
                                     </tr>
                                 </thead>
                                 <tbody>                                   
@@ -59,54 +67,82 @@
 
                                             <img style="width:50px; height:auto" src="images/defaultBook.png" alt="images/defaultBook.png" id="book-img"></td>
                                         <td align="center" valign="middle" class="product-details">
-                                            <h3 class="title"><%= book.getTitolo()%> </h3>
-                                            <span class="location"><strong>ISBN:</strong><%= book.getCodice()%></span>
+                                            <h3 class="title"> <%= book.getTitolo()%> </h3>
+                                            <span class="location"><strong>ISBN:</strong> <%= book.getCodice()%></span>
                                             <br/>
 
 
 
                                             <%
-                                                int i = 0;
-                                                for (Autore aut : autori) {
-                                                    if (i == 0) {
-                                            %>
-                                                <span class="add-id"><strong>Autori:</strong>
-
-                                                <%
-                                                } else {
+                                                if(!book.getAutori().isEmpty()){
+                                                    int i = 0;
+                                                    for (Autore aut : autori) {
+                                                        if (i == 0) {
                                                 %>
-                                                    <span class="add-id"><strong style="color:rgba(0, 0, 0, 0);"></strong>
+                                                    <span class="add-id"><strong>Autori:</strong>
+
+                                                    <%
+                                                    } else {
+                                                    %>
+                                                        <span class="add-id"><strong style="color:rgba(0, 0, 0, 0);"></strong>
+                                                        <%
+                                                            }
+                                                            if(i>0){
+                                                        %>
+                                                        <%= " - " + aut.getNome() + " " + aut.getCognome()%>
+                                                    </span>
+                                                    <%  }else{
+                                                    %>
+                                                    <%=aut.getNome() + " " + aut.getCognome()%>
+
                                                     <%
                                                         }
-                                                        if(i>0){
+                                                            i++;
+                                                        }
                                                     %>
-                                                    <%= " - " + aut.getNome() + " " + aut.getCognome()%>
-                                                </span>
-                                                <%  }else{
-                                                %>
-                                                <%=aut.getNome() + " " + aut.getCognome()%>
-  
+                                                <br/>
                                                 <%
-                                                    }
-                                                        i++;
-                                                    }
+
+                                                    }  
                                                 %>
                                                 
-                                                <br/>
                                                 <span><strong>Editore: </strong><%= book.getDenominazioneEditore()%></span>
                                                 </br>
-                                                <span><strong>Numero Registrazione: </strong> <%= book.getCopie().get(pageIndex).getNumeroRegistrazione() %></span>
-                                                <br/>
-                                                <span><strong>Scaffale: </strong><%= book.getCopie().get(pageIndex).getNumeroScaffale() %> <strong>Posizione: </strong> <%= book.getCopie().get(pageIndex).getPosizione() %><strong>   Disponibile: </strong><%= book.getCopie().get(pageIndex).disponibile()  %> </span>
-                                                <h6 class="title" style="position: relative; left: 20%;"> </h6>
-
-                                        </td>                                       
+                                                <%
+                                                    if(!book.getCopie().isEmpty()){
+                                                %>
+                                                    <span><strong>Numero Registrazione: </strong> <%= book.getCopie().get(pageIndex).getNumeroRegistrazione() %></span>
+                                                    <br/>
+                                                    <span><strong>Scaffale: </strong><%= book.getCopie().get(pageIndex).getNumeroScaffale() %> <strong>Posizione: </strong> <%= book.getCopie().get(pageIndex).getPosizione() %><strong>   Disponibile: </strong><span style="color: red;"><%= book.getCopie().get(pageIndex).disponibile()  %> </span></span>
+                                                <%
+                                                    }else{
+                                                %>
+                                                    <span><strong>Attualmente non risultano copie disponibili!</strong></span>
+                                                <%
+                                                    }
+                                                %>
+                                        </td>       
+                                        <%
+                                                        if ( (request.getSession().getAttribute("bibliotecario") != null) || (request.getSession().getAttribute("persona") != null) ) {
+                                                    %>
                                         <td align="center" valign="middle" class="action" data-title="Action" style="position: relative; top: 30px; right: 10px;">
                                             <div class="">
                                                 <form action="" method="GET">
                                                     <input type="hidden" name="isbn" value="<%= book.getCodice()%>">
-                                                    
-                                                    <button class="btn btn-main">Prenota</button>
+                                                    <%}
+                                                        %>
+                                                    <%
+                                                        if (request.getSession().getAttribute("bibliotecario") != null){
+                                                    %>
+                                                        <button class="btn btn-main">Modifica</button>
+                                                    <%
+                                                        }else if (request.getSession().getAttribute("persona") != null){
+                                                    %>
+                                                        <button class="btn btn-main">Prenota</button>
+                                                    <%
+                                                        }
+                                                    %>
+                                                      
                                                 </form>
                                             </div>
                                         </td>

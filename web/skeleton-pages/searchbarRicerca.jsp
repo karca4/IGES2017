@@ -41,7 +41,7 @@
                                                                         </select>
                                                                       </div>
                                                                         <div class="form-group" style="opacity: 0.8;">
-										<input type="text" minlength="2" id="search-main" name="searchKey" tabindex="1" class="form-control" placeholder="Cerca un libro...">
+                                                                            <input type="text" required minlength="2" id="search-main" name="searchKey" tabindex="1" class="form-control" placeholder="Cerca un libro...">
 									</div>
 									<div class="form-group" >
 										<div class="row">
@@ -54,7 +54,8 @@
 								</form>
 								<form id="manuale-form" action="<%=application.getContextPath()%>/gestioneLibri/cercaLibro" method="GET" style="display: none;">
 									<div class="form-group" style="opacity: 0.8;">
-										<input type="text" minlength="2" id="search-main" name="searchKey" tabindex="1" class="form-control" placeholder="Cerca un manuale...">
+                                                                                <input type="hidden" id="critManuale" name="criterioManuale" value=""/>
+										<input type="text" required minlength="2" id="search-main" name="searchKey" tabindex="1" class="form-control" placeholder="Cerca un manuale...">
 									</div>
 									<div class="form-group">
 										<div class="row">
@@ -66,7 +67,8 @@
 								</form>
                                                                 <form id="periodico-form" action="<%=application.getContextPath()%>/gestioneLibri/cercaLibro" method="GET" style="display: none;">
 									<div class="form-group" style="opacity: 0.8;">
-										<input type="text" minlength="2" id="search-main" name="searchKey" tabindex="1" class="form-control" placeholder="Cerca un periodico...">
+                                                                                <input type="hidden" id="critPeriodico" name="criterioPeriodico" value=""/>
+										<input type="text" required minlength="2" id="search-main" name="searchKey" tabindex="1" class="form-control" placeholder="Cerca un periodico...">
 									</div>
 									<div class="form-group">
 										<div class="row">
@@ -105,6 +107,7 @@
                 $("#periodico-form").fadeOut(100);
 		$('#periodico-form-link').removeClass('active');
 		$(this).addClass('active');
+                document.getElementById("critManuale").value = "manuale";
 		e.preventDefault();
 	});
           $('#periodico-form-link').click(function(e) {
@@ -114,6 +117,7 @@
                 $("#manuale-form").fadeOut(100);
 		$('#manuale-form-link').removeClass('active');
 		$(this).addClass('active');
+                document.getElementById("critPeriodico").value = "periodico";
 		e.preventDefault();
 	});
 });

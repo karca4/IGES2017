@@ -6,6 +6,8 @@
 package controllers;
 
 import entities.Libro;
+import entities.Manuale;
+import entities.Periodico;
 import utils.*;
 import managers.ManagerGestioneLibri;
 import java.io.IOException;
@@ -37,52 +39,99 @@ public class CercaLibroServlet extends HttpServlet {
         String message;
         String searchKey = request.getParameter("searchKey");
         String criterioName = request.getParameter("criterio");
+        String criterioName2 = request.getParameter("criterioManuale");
+        String criterioName3 = request.getParameter("criterioPeriodico");
         
         Collection<Libro> libri = new ArrayList<>();
-        //Utente bibliotecario = (Utente) request.getSession().getAttribute("bibliotecario");
+        Collection<Manuale> manuali = new ArrayList<>();
+        Collection<Periodico> periodici = new ArrayList<>();
+        
         Criterio criterio = null;
         
-        if (criterioName.equalsIgnoreCase("titolo")) {
+        ManagerGestioneLibri managerLibri = new ManagerGestioneLibri();
+        
+        RequestDispatcher dispatcher = null;
+        
+        if(criterioName!= null){
+        
+            if (criterioName.equalsIgnoreCase("titolo")) {
+
+                System.out.println("Cerca per titolo");
+
+               criterio = new CriterioPerTitolo(searchKey);
+
+            } else if (criterioName.equalsIgnoreCase("autore")) {
+
+                criterio = new CriterioPerAutore(searchKey);
+
+            } else if (criterioName.equals("editore")) {
+
+                criterio = new CriterioPerEditore(searchKey);
+
+            } else if (criterioName.equals("isbn")) {
+
+                criterio = new CriterioPerIsbn(searchKey);   
+
+            } else if (criterioName.equals("tipo")) {
+
+                criterio = new CriterioPerTipo(searchKey);   
+
+            } else {
+                //YOU SHOULD NOT BE HERE!
+            }
             
-            System.out.println("Cerca per titolo");
+            libri = managerLibri.cercaLibro(criterio);
+
+            if (libri.isEmpty()) {
+                message = "Nessun libro corrispondente alla tua ricerca.";
+            } else {
+                message = "correct";
+            }
+
+            request.setAttribute("message", message);
+            request.setAttribute("libri", libri);
             
-           criterio = new CriterioPerTitolo(searchKey);
+            dispatcher = request.getRequestDispatcher("cercaLibro.jsp");
+
+        }else if(criterioName2 != null){//manuale
             
-        } else if (criterioName.equalsIgnoreCase("autore")) {
+            criterio = new CriterioPerManuale(searchKey);
             
-            criterio = new CriterioPerAutore(searchKey);
+            manuali = managerLibri.cercaManuale(criterio);
+
+            if (manuali.isEmpty()) {
+                message = "Nessun manuale corrispondente alla tua ricerca.";
+            } else {
+                message = "correct";
+            }
+
+            request.setAttribute("message", message);
+            request.setAttribute("manuali", manuali);
             
-        } else if (criterioName.equals("editore")) {
-               
-            criterio = new CriterioPerEditore(searchKey);
+            dispatcher = request.getRequestDispatcher("cercaManuale.jsp");
             
-        } else if (criterioName.equals("isbn")) {
+        }else if(criterioName3 != null){//periodico
             
-            criterio = new CriterioPerIsbn(searchKey);   
+            criterio = new CriterioPerPeriodico(searchKey);
             
-        } else if (criterioName.equals("tipo")) {
+            periodici = managerLibri.cercaPeriodico(criterio);
+
+            if (periodici.isEmpty()) {
+                message = "Nessun periodico corrispondente alla tua ricerca.";
+            } else {
+                message = "correct";
+            }
+
+            request.setAttribute("message", message);
+            request.setAttribute("periodici", periodici);
             
-            criterio = new CriterioPerTipo(searchKey);   
+            dispatcher = request.getRequestDispatcher("cercaPeriodico.jsp");
             
         } else {
             //YOU SHOULD NOT BE HERE!
+            System.out.println("Non devi essere qui!");
         }
-
-        ManagerGestioneLibri managerLibri = new ManagerGestioneLibri();
         
-        libri = managerLibri.cercaLibro(criterio);
-
-        if (libri.isEmpty()) {
-            message = "Nessun libro corrispondente alla tua ricerca.";
-        } else {
-            message = "correct";
-        }
-
-        request.setAttribute("message", message);
-        request.setAttribute("libri", libri);
-        //request.setAttribute("offset",offset );
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cercaLibro.jsp");
         dispatcher.forward(request, response);
     }
 

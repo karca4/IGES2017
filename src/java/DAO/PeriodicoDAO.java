@@ -5,20 +5,19 @@
  */
 package DAO;
 
+import entities.Manuale;
 import entities.Periodico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import utils.DriverManagerConnectionPool;
 
-/**
- *
- * @author carmi
- */
 public class PeriodicoDAO extends AbstractDAO<Periodico>{
     private final String doInsertQuery = "INSERT INTO periodico(CodVolume,Frequenza)" + "VALUES(?,?);";
+    private final String doRetriveAllQuery = "Select volume.*, periodico.frequenza from periodico join volume on volume.codice=periodico.codvolume";
 
     @Override
     public Periodico doRetriveById(Object... id) {
@@ -27,7 +26,41 @@ public class PeriodicoDAO extends AbstractDAO<Periodico>{
 
     @Override
     public List<Periodico> doRetriveAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        List<Periodico> periodici = new ArrayList<>();
+        
+        try {
+            Connection con = DriverManagerConnectionPool.getConnection();
+            PreparedStatement prst = con.prepareStatement(doRetriveAllQuery);
+            
+            try {
+                ResultSet rs = prst.executeQuery();
+                
+                while (rs.next()) {
+                    
+                    Periodico periodico = new Periodico(rs.getString("Codice"), rs.getString("Titolo"), rs.getInt("Edizione"), rs.getString("DataPubblicazione"), rs.getInt("DurataMaxPrestito"), rs.getString("Lingua"), rs.getString("DenominazioneEditore"), rs.getString("CittaEditore"), rs.getString("frequenza"));
+                    String isbn = rs.getString("Codice");
+                    periodico.setAutori(new AutoreDAO().doRetriveByLibro(isbn));
+                    periodico.setCopie(new CopiaDAO().doRetriveAllById(isbn));
+                    periodici.add(periodico);
+                }
+                
+                rs.close();
+                
+            } catch (SQLException e) {
+                con.rollback();
+                
+            } finally {
+                prst.close();
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return periodici;
+
     }
 
     @Override

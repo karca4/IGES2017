@@ -111,12 +111,9 @@ public class LibroDAO extends AbstractDAO<Libro>{
                 while (rs.next()) {
                     
                     Libro book = new Libro(rs.getString("genere"), rs.getString("tipo"), rs.getString("Codice"), rs.getString("Titolo"), rs.getInt("Edizione"), rs.getString("DataPubblicazione"), rs.getInt("DurataMaxPrestito"), rs.getString("Lingua"), rs.getString("DenominazioneEditore"), rs.getString("CittaEditore"));
-                    String isbn = rs.getString("Codice");     
+                    String isbn = rs.getString("Codice");
                  
                     book.setAutori(new AutoreDAO().doRetriveByLibro(isbn)); 
-                    
-                    //System.out.println("libro:  " + book.getTitolo() + "Lista autori: " + book.getAutori());
-                    
                     book.setCollana(new CollanaDAO().doRetriveById(isbn));
                     book.setCopie(new CopiaDAO().doRetriveAllById(isbn));
                     libri.add(book);

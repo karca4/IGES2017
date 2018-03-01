@@ -7,10 +7,6 @@ package entities;
 
 import java.util.List;
 
-/**
- *
- * @author carmi
- */
 public class Periodico extends Volume{
     private String frequenza;
     
@@ -62,6 +58,12 @@ public class Periodico extends Volume{
     public List<Autore> getAutori() {
         return autori;
     }
+
+    @Override
+    public String toString() {
+        return "Periodico{" + super.toString() + "frequenza=" + frequenza + '}';
+    }
     
         
+    
 }

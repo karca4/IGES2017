@@ -122,8 +122,6 @@ public class AutoreDAO extends AbstractDAO<Autore> {
             
             prst.setString(1, daPassare);
             
-             //System.out.println("query: " + prst);
-        
             try (ResultSet rs = prst.executeQuery()) { 
                 con.commit();
                 
