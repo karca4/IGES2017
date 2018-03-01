@@ -19,10 +19,15 @@ import entities.Libro;
 import entities.Manuale;
 import entities.Periodico;
 import entities.Volume;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import utils.Criterio;
+import utils.DriverManagerConnectionPool;
 
 public class ManagerGestioneLibri {
     
@@ -64,6 +69,64 @@ public class ManagerGestioneLibri {
         return pDAO.doInsert(periodico);
     }
     
+     public boolean insertVolumeInCollana(Volume v, Collana c){
+        try{
+            Connection con = DriverManagerConnectionPool.getConnection();            
+            PreparedStatement prst = con.prepareStatement("INSERT INTO appartiene(CodVolume,NomeCollana,NumeroOrdineCollana)" + 
+                                                            "VALUES(?,?,?);",PreparedStatement.RETURN_GENERATED_KEYS);
+            
+            prst.setString(1, v.getCodice());
+            prst.setString(2,c.getNomeCollana());
+            prst.setInt(3,Integer.parseInt(c.getNumeroOrdineCollana()));
+           
+            try{
+                prst.execute();
+                con.commit();
+                ResultSet rs = prst.getGeneratedKeys();
+                
+                return true;
+            } catch(SQLException e){
+                con.rollback();
+                e.printStackTrace();
+                return false;
+            } finally {
+                prst.close();
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+            
+        } catch(SQLException e){
+            return false;
+        }
+    }
+    
+    public boolean insertAutoreDiVolume(Volume v, Autore a){
+        try{
+            Connection con = DriverManagerConnectionPool.getConnection();            
+            PreparedStatement prst = con.prepareStatement("INSERT INTO scritto(CodAutore,CodVolume)" + 
+                                                            "VALUES(?,?);",PreparedStatement.RETURN_GENERATED_KEYS);
+            
+            prst.setString(1, a.getCodFiscale());
+            prst.setString(2, v.getCodice());
+           
+            try{
+                prst.execute();
+                con.commit();
+                ResultSet rs = prst.getGeneratedKeys();
+                
+                return true;
+            } catch(SQLException e){
+                con.rollback();
+                e.printStackTrace();
+                return false;
+            } finally {
+                prst.close();
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+            
+        } catch(SQLException e){
+            return false;
+        }
+    }
     
     /**
      * Metodo che ricerca un libro nel database
