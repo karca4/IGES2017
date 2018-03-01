@@ -176,7 +176,7 @@ public class Volume {
                         return "Volume{" + "codice=" + codice + ", titolo=" + titolo + ", edizione=" + edizione + ", dataPubblicazione=" + dataPubblicazione + ", durataMaxPrestito=" + durataMaxPrestito + ", lingua=" + lingua + ", denominazioneEditore=" + denominazioneEditore + ", cittaEditore=" + cittaEditore + ", autori=" + autori.toString() + "copie= " + copie.toString() + '}';
 
         }else{
-            return "Volume{" + "codice=" + codice + ", titolo=" + titolo + ", edizione=" + edizione + ", dataPubblicazione=" + dataPubblicazione + ", durataMaxPrestito=" + durataMaxPrestito + ", lingua=" + lingua + ", denominazioneEditore=" + denominazioneEditore + ", cittaEditore=" + cittaEditore + ", autori=" + autori.toString() + '}';
+            return "Volume{" + "codice=" + codice + ", titolo=" + titolo + ", edizione=" + edizione + ", dataPubblicazione=" + dataPubblicazione + ", durataMaxPrestito=" + durataMaxPrestito + ", lingua=" + lingua + ", denominazioneEditore=" + denominazioneEditore + ", cittaEditore=" + cittaEditore + '}';
         }
     }
     

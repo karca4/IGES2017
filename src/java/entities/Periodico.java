@@ -58,6 +58,12 @@ public class Periodico extends Volume{
     public List<Autore> getAutori() {
         return autori;
     }
+
+    @Override
+    public String toString() {
+        return "Periodico{" + super.toString() + "frequenza=" + frequenza + '}';
+    }
     
         
+    
 }

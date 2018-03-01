@@ -58,5 +58,12 @@ public class Manuale extends Volume{
     public List<Autore> getAutori() {
         return autori;
     }
+
+    @Override
+    public String toString() {
+        return "Manuale{" + super.toString() + "categoria=" + categoria + '}';
+    }
+    
+    
     
 }
