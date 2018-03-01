@@ -24,7 +24,7 @@
                     List<Volume> volumi = (List)request.getAttribute("volumi");
                     for(Volume v : volumi){
                 %>
-                <p><%= v.getCodice()+" - "+v.getTitolo()+" - "+v.getEdizione()+" - "+v.getDataPubblicazione()+" - "+v.getDurataMaxPrestito()+" - "+v.getLingua()+" - "+v.getDenominazioneEditore()+" - "+v.getCittaEditore() %>
+                <a href="<%=application.getContextPath()%>/gestioneLibri/posizionamentoVolumeForm.jsp?volumeId=<%= v.getCodice()%>"><%= v.getCodice()+" - "+v.getTitolo()+" - "+v.getEdizione()+" - "+v.getDataPubblicazione()+" - "+v.getDurataMaxPrestito()+" - "+v.getLingua()+" - "+v.getDenominazioneEditore()+" - "+v.getCittaEditore() %></a><br>
                 <%
                     }
                 %>

@@ -18,6 +18,7 @@ public class CopiaDAO extends AbstractDAO<Copia>{
 
     private final String doRetriveById = "Call RicercaCopia(?)";
     private final String doRetriveAllQuery = "Select * from copia";
+    private final String doInsertQuery = "INSERT INTO copia(NumeroRegistrazione,NumeroScaffale,Posizione,CodiceVolume,Disponibilità)" + "VALUES(?,?,?,?,?);";
 
     @Override
     public Copia doRetriveById(Object... id) {
@@ -68,8 +69,34 @@ public class CopiaDAO extends AbstractDAO<Copia>{
     }
 
     @Override
-    public int doInsert(Copia entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int doInsert(Copia copia) {
+        try{
+            Connection con = DriverManagerConnectionPool.getConnection();            
+            PreparedStatement prst = con.prepareStatement(doInsertQuery,PreparedStatement.RETURN_GENERATED_KEYS);
+            
+            prst.setString(1,copia.getNumeroRegistrazione());
+            prst.setString(2,copia.getNumeroScaffale());
+            prst.setInt(3, copia.getPosizione());
+            prst.setString(4, copia.getCodiceVolume());
+            prst.setBoolean(5, copia.isDisponibilita());
+            try{
+                prst.execute();
+                con.commit();
+                ResultSet rs = prst.getGeneratedKeys();
+                
+                return 1;
+            } catch(SQLException e){
+                con.rollback();
+                e.printStackTrace();
+                return -1;
+            } finally {
+                prst.close();
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+            
+        } catch(SQLException e){
+            return -1;
+        }
     }
 
     @Override

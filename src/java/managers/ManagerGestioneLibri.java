@@ -244,4 +244,9 @@ public class ManagerGestioneLibri {
         return vDAO.doRetriveNoPositioned();
     }
     
+    public int insertCopia(Copia copia){
+        CopiaDAO cDAO = new CopiaDAO();
+        return cDAO.doInsert(copia);
+    }
+    
 }
