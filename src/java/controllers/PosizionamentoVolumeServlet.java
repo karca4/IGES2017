@@ -35,20 +35,31 @@ public class PosizionamentoVolumeServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String scelta = request.getParameter("scelta");
-        String volumeId = request.getParameter("volumeId");
-        String numRegistrazione = request.getParameter("numRegistrazione");
-        String numScaffale = request.getParameter("numScaffale");
-        int posizione = Integer.parseInt(request.getParameter("posizione"));
-        
         ManagerGestioneLibri managerGestioneLibri = new ManagerGestioneLibri();
-        Copia copia = new Copia();
-        copia.setNumeroRegistrazione(numRegistrazione);
-        copia.setNumeroScaffale(numScaffale);
-        copia.setPosizione(posizione);
-        copia.setCodiceVolume(volumeId);
-        copia.setDisponibilita(true);
-        System.out.println("Inserimento della copia: "+managerGestioneLibri.insertCopia(copia));
+        String volumeId, numRegistrazione, numScaffale;
+        int posizione;
+        
+        String scelta = request.getParameter("scelta");
+        switch(scelta){
+            case "posiziona":
+                volumeId = request.getParameter("volumeId");
+                numRegistrazione = request.getParameter("numRegistrazione");
+                numScaffale = request.getParameter("numScaffale");
+                posizione = Integer.parseInt(request.getParameter("posizione"));
+                
+                Copia copia = new Copia();
+                copia.setNumeroRegistrazione(numRegistrazione);
+                copia.setNumeroScaffale(numScaffale);
+                copia.setPosizione(posizione);
+                copia.setCodiceVolume(volumeId);
+                copia.setDisponibilita(true);
+                System.out.println("Inserimento della copia: "+managerGestioneLibri.insertCopia(copia));
+                break;
+            case "elimina":
+                volumeId = request.getParameter("volumeId");
+                System.out.println("Rimozione della copia: "+managerGestioneLibri.removeCopia(volumeId));
+                break;
+        }
         
         response.sendRedirect(request.getContextPath()+"/gestione/posizionamento");
     }

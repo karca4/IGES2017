@@ -34,9 +34,13 @@
                     for(Copia c : copie){
                 %>
                 <p><%= c.getNumeroRegistrazione()+" - "+c.getNumeroScaffale()+" - "+c.getPosizione()+" - "+c.getCodiceVolume()+" - "+c.isDisponibilita() %>
+                    <a href="<%=application.getContextPath()%>/gestioneLibri/eliminaVolumeForm.jsp?volumeId=<%=c.getCodiceVolume()%>">Elimina</a>
+                    <a></a>
+                </p>
                 <%
                     }
                 %>
+                
         </div>
     </body>
 </html>

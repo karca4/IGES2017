@@ -249,4 +249,31 @@ public class ManagerGestioneLibri {
         return cDAO.doInsert(copia);
     }
     
+    public boolean removeCopia(String idVolume){
+        try{
+            Connection con = DriverManagerConnectionPool.getConnection();            
+            PreparedStatement prst = con.prepareStatement("DELETE FROM copia WHERE CodiceVolume=?",PreparedStatement.RETURN_GENERATED_KEYS);
+            
+            prst.setString(1, idVolume);
+           
+            try{
+                prst.execute();
+                con.commit();
+                //ResultSet rs = prst.getGeneratedKeys();
+                
+                return true;
+            } catch(SQLException e){
+                con.rollback();
+                e.printStackTrace();
+                return false;
+            } finally {
+                prst.close();
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+            
+        } catch(SQLException e){
+            return false;
+        }
+    }
+    
 }
