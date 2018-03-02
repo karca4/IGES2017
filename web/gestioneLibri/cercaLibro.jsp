@@ -24,9 +24,7 @@
                             <h3 class="widget-header"></h3>
 
                             <%
-                                String message="";
-                                if(request.getParameterMap().containsKey("message"))
-                                    message = (String) request.getAttribute("message");
+                                String message = (String) request.getAttribute("message");
                                 if (!message.equals("correct")) {
 
                             %>
