@@ -1,9 +1,3 @@
-<%-- 
-    Document   : searchbar
-    Created on : 27-feb-2018, 8.23.22
-    Author     : umbertopicariello
---%>
-
 <!-- Masthead -->
         <header class="masthead text-white text-center">
           <div class="overlay"></div>

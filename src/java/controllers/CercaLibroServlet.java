@@ -56,8 +56,6 @@ public class CercaLibroServlet extends HttpServlet {
         
             if (criterioName.equalsIgnoreCase("titolo")) {
 
-                System.out.println("Cerca per titolo");
-
                criterio = new CriterioPerTitolo(searchKey);
 
             } else if (criterioName.equalsIgnoreCase("autore")) {

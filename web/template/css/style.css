@@ -1,7 +1,5 @@
 /*=== MEDIA QUERY ===*/
 
-
-
 p, li, input, select, button {
   font-family: "Muli", sans-serif;
   color: #666;
@@ -218,5 +216,24 @@ tbody{
   position: absolute;
   left: 360px;
   margin-top: 60px;
+}
+
+#coll{
+    font-size: 20px;
+}
+
+#coll:hover{
+    color: #5672f9 !important;
+}
+
+.mod:focus, .mod:hover{
+  text-decoration: none;
+  outline: 0;
+  color: #5672f9;
+}
+
+.user-dashboard-menu{
+    position: relative;
+    top: -90px;
 }
 

@@ -7,6 +7,8 @@
                         <img src="../template/img/logo-with-name.png" alt="" height="38">
                     </a>
           
+          <!--<a id="coll" class="" style="text-decoration: none; color: black;" href="">Cerca</a>-->
+          
           <%  if ( (request.getSession().getAttribute("persona") == null ) &&  ( request.getSession().getAttribute("bibliotecario") == null )) {
                                     %>
                                     
@@ -43,6 +45,7 @@
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimentoManuale">Carica Manuale</a>
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimentoPeriodico">Carica Periodico</a>
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/posizionamento">Posiziona Volume</a>
+                                    <a class="dropdown-item" href="../skeleton-pages/homePrestiti.jsp">Sezione Prestiti</a>
                                     <a class="dropdown-item" href="#">Visualizza Prenotazioni</a>
                                     <a class="dropdown-item" href="#">Visualizza Collocazione</a>
                                    <a class="dropdown-item" href="<%=application.getContextPath()%>/autenticazione/logout">Logout</a>

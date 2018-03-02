@@ -26,7 +26,7 @@
                             <div class="sidebar">
                                 
                                 <div class="widget user-dashboard-menu">
-                                    <ul>   
+                                    <ul>
                                         
                                           
                                          
@@ -78,12 +78,16 @@
         </div>
       </div>
     </section>
+        
+        <!--===============================
+        =           Ricerca Da Home           =
+        ================================-->
+        
+        <%@include file="ricercaDaHome.jsp" %>
 
         <!--===============================
         =            Footer Area            =
         ================================-->
-        
-        
         
         <%@include file="footer.jsp" %>
 
