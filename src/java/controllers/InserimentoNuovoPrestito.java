@@ -5,7 +5,6 @@
  */
 package controllers;
 
-import entities.Libro;
 import entities.Prestito;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,10 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import managers.ManagerPrestiti;
 
-@WebServlet(name = "CercaPrestitiServlet", urlPatterns = {"/gestionePrestiti/cercaPrestiti"})
-public class CercaPrestitiUtenteServlet extends HttpServlet{
-    
-     /**
+@WebServlet(name = "inserimentoNuovoPrestitoServlet", urlPatterns = {"/gestionePrestiti/inserimentoNuovoPrestito"})
+public class InserimentoNuovoPrestito extends HttpServlet{
+  
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -34,24 +33,25 @@ public class CercaPrestitiUtenteServlet extends HttpServlet{
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        Collection<Prestito> prestiti = new ArrayList<>();
         String message;
-        int searchKey = Integer.parseInt(request.getParameter("searchKey"));
+        String numRegCopia = "";
+        String scaffale = "";
+        String posizione = "";
+        String tessera = "";
+        
+        numRegCopia = request.getParameter("numRegCopia");
+        scaffale = request.getParameter("scaffale");
+        posizione = request.getParameter("posizione");
+        tessera = request.getParameter("tessera");
         
         ManagerPrestiti managerPrestiti = new ManagerPrestiti();
+        message = managerPrestiti.inserisciNuovoPrestito(numRegCopia, scaffale, Integer.parseInt(posizione), Integer.parseInt(tessera));
         
-        prestiti = managerPrestiti.cercaPrestitiUtente(searchKey);
+        System.out.println("Messaggio: " + message);
         
-        if(prestiti == null){
-            message = "Nessun prestito associato all'utente.";
-        }else{
-            message = "correct";
-        }       
-
-        request.setAttribute("message", message);
-        request.setAttribute("prestiti", prestiti);
+        request.setAttribute("messageIns", message);
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("../gestionePrestiti/homePrestiti.jsp"); 
+        RequestDispatcher dispatcher = request.getRequestDispatcher("../gestionePrestiti/effettuaPrestito.jsp"); 
         dispatcher.forward(request, response);
         
     }
@@ -94,6 +94,8 @@ public class CercaPrestitiUtenteServlet extends HttpServlet{
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    
     
     
 }

@@ -211,6 +211,7 @@ display: inline-table;
 
 .tableU tbody{
   overflow-y: scroll;
+  overflow-x: hidden !important;
   height: 200px;
   width: 100%;
   position: absolute;
@@ -236,13 +237,11 @@ display: inline-table;
     position: relative;
     top: -90px;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 6790e022d1d18121e3c1969420b510e12e732386
 
 .tablePrestiti{
     position: relative;
     top: 20px;
     left: -150px;
+    height:260px !important; 
 }
+

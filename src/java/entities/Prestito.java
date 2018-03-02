@@ -19,8 +19,16 @@ public class Prestito {
     protected Calendar dataPrestito;
     protected Calendar dataRestituzione;
     protected Volume volume;
+    protected Utente utente;
     private String status;
 
+    public Prestito(int numTessUtente, String numRegCopia, String numScafCopia, int posCopia) {
+        this.numTessUtente = numTessUtente;
+        this.numRegCopia = numRegCopia;
+        this.numScafCopia = numScafCopia;
+        this.posCopia = posCopia;
+    }
+    
     public Prestito(int numTessUtente, String numRegCopia, String numScafCopia, int posCopia, Calendar dataPrestito, Calendar dataRestituzione) {
         this.numTessUtente = numTessUtente;
         this.numRegCopia = numRegCopia;
@@ -121,14 +129,24 @@ public class Prestito {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
    
     @Override
     public String toString() {
         if(volume != null){
             return "Prestito{" + volume.toString() + ", numTessUtente=" + numTessUtente + ", numRegCopia=" + numRegCopia + ", numScafCopia=" + numScafCopia + ", posCopia=" + posCopia + ", dataPrestito=" + dataPrestito + ", dataRestituzione=" + dataRestituzione + ", status: " + status + '}';
-
+        }else if(volume != null && utente != null){
+            return "Prestito{" + volume.toString() + ", utente: " + utente.toString() + ", numTessUtente=" + numTessUtente + ", numRegCopia=" + numRegCopia + ", numScafCopia=" + numScafCopia + ", posCopia=" + posCopia + ", dataPrestito=" + dataPrestito + ", dataRestituzione=" + dataRestituzione + ", status: " + status + '}';
         }else{
             return "Prestito{" + "numTessUtente=" + numTessUtente + ", numRegCopia=" + numRegCopia + ", numScafCopia=" + numScafCopia + ", posCopia=" + posCopia + ", dataPrestito=" + dataPrestito + ", dataRestituzione=" + dataRestituzione + ", status: " + status + '}';
+
         }
     }
 

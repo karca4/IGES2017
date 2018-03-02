@@ -5,7 +5,6 @@
  */
 package controllers;
 
-import entities.Libro;
 import entities.Prestito;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,10 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import managers.ManagerPrestiti;
 
-@WebServlet(name = "CercaPrestitiServlet", urlPatterns = {"/gestionePrestiti/cercaPrestiti"})
-public class CercaPrestitiUtenteServlet extends HttpServlet{
-    
-     /**
+@WebServlet(name = "prestitiInRitardoServlet", urlPatterns = {"/gestionePrestiti/prestitiInRitardo"})
+public class PrestitiInRitardoServlet extends HttpServlet{
+
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -36,20 +35,19 @@ public class CercaPrestitiUtenteServlet extends HttpServlet{
 
         Collection<Prestito> prestiti = new ArrayList<>();
         String message;
-        int searchKey = Integer.parseInt(request.getParameter("searchKey"));
         
         ManagerPrestiti managerPrestiti = new ManagerPrestiti();
         
-        prestiti = managerPrestiti.cercaPrestitiUtente(searchKey);
+        prestiti = managerPrestiti.cercaPrestitiDaRestituire();
         
         if(prestiti == null){
-            message = "Nessun prestito associato all'utente.";
+            message = "Nessun volume deve essere restituito.";
         }else{
             message = "correct";
         }       
 
-        request.setAttribute("message", message);
-        request.setAttribute("prestiti", prestiti);
+        request.setAttribute("messageAll", message);
+        request.setAttribute("allPrestiti", prestiti);
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("../gestionePrestiti/homePrestiti.jsp"); 
         dispatcher.forward(request, response);
@@ -94,6 +92,7 @@ public class CercaPrestitiUtenteServlet extends HttpServlet{
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
     
     
 }

@@ -45,9 +45,7 @@
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimentoManuale">Carica Manuale</a>
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimentoPeriodico">Carica Periodico</a>
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/posizionamento">Posiziona Volume</a>
-                                    <a class="dropdown-item" href="../skeleton-pages/homePrestiti.jsp">Sezione Prestiti</a>
-                                    <a class="dropdown-item" href="#">Visualizza Prenotazioni</a>
-                                    <a class="dropdown-item" href="#">Visualizza Collocazione</a>
+                                    <a class="dropdown-item" href="../gestionePrestiti/homePrestiti.jsp">Sezione Prestiti</a>
                                    <a class="dropdown-item" href="<%=application.getContextPath()%>/autenticazione/logout">Logout</a>
                                 </div>
                             </li>

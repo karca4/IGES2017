@@ -6,6 +6,7 @@
 package DAO;
 
 import entities.Account;
+import entities.Libro;
 import entities.Utente;
 import utils.DriverManagerConnectionPool;
 import java.sql.Connection;
@@ -37,37 +38,26 @@ public class UtenteDAO extends AbstractDAO<Utente>{
 
     @Override
     public Utente doRetriveById(Object... id) {
-       /* int tesseraUtente = (int) id[0];
+        int tesseraUtente = (int) id[0];
         Utente utente = null;
         try {
             Connection con = DriverManagerConnectionPool.getConnection();
             PreparedStatement prst = con.prepareStatement(doRetriveByIdQuery);
-            prst.setInt(1,tesseraUtente);
+            prst.setInt(1, tesseraUtente);
            
-
             try {
                 ResultSet rs = prst.executeQuery();
                 con.commit();
                 
-                AccountDAO accountDAO = new AccountDAO();
-                
                 if (rs.next()) {
-                    Account account = null;
-                    if(rs.getString("email") != null) {
-                        account = accountDAO.doRetriveById(rs.getString("email"));
-                    }
-                    
-                    utente = new Utente(rs.getString("NumeroTessera"),, rs.getString("nome"), rs.getString("cognome"), account);
-                    
+                    utente = new Utente(rs.getString("Nome"), rs.getString("Cognome"));
                 }
                 rs.close();
                 return utente;
 
             } catch (SQLException e) {
                 con.rollback();
-                e.printStackTrace();
                 return null;
-               
             } finally {
                 prst.close();
                 DriverManagerConnectionPool.releaseConnection(con);
@@ -76,8 +66,7 @@ public class UtenteDAO extends AbstractDAO<Utente>{
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
-        }*/
-       return null;
+        }
         
     }
 

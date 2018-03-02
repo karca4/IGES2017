@@ -5,7 +5,6 @@
  */
 package controllers;
 
-import entities.Libro;
 import entities.Prestito;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,10 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import managers.ManagerPrestiti;
 
-@WebServlet(name = "CercaPrestitiServlet", urlPatterns = {"/gestionePrestiti/cercaPrestiti"})
-public class CercaPrestitiUtenteServlet extends HttpServlet{
-    
-     /**
+@WebServlet(name = "restituisciVolumeServlet", urlPatterns = {"/gestionePrestiti/restituisciVolume"})
+public class RestituisciVolumeServlet extends HttpServlet{
+
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -34,22 +33,14 @@ public class CercaPrestitiUtenteServlet extends HttpServlet{
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        Collection<Prestito> prestiti = new ArrayList<>();
         String message;
-        int searchKey = Integer.parseInt(request.getParameter("searchKey"));
+        String numRegCopia = request.getParameter("numReg");
         
         ManagerPrestiti managerPrestiti = new ManagerPrestiti();
         
-        prestiti = managerPrestiti.cercaPrestitiUtente(searchKey);
+        message = managerPrestiti.restituisciVolume(numRegCopia);
         
-        if(prestiti == null){
-            message = "Nessun prestito associato all'utente.";
-        }else{
-            message = "correct";
-        }       
-
-        request.setAttribute("message", message);
-        request.setAttribute("prestiti", prestiti);
+        request.setAttribute("messageA", message);
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("../gestionePrestiti/homePrestiti.jsp"); 
         dispatcher.forward(request, response);
@@ -94,6 +85,9 @@ public class CercaPrestitiUtenteServlet extends HttpServlet{
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    
+    
     
     
 }
