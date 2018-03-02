@@ -1,3 +1,6 @@
+<%
+        request.getSession().setAttribute("message", "Nessun libro corrispondente alla tua ricerca.");
+%>
 <a style="text-decoration: none;" href="../gestioneLibri/cercaLibro.jsp">
     <header class="masthead3 text-white text-center">
 
