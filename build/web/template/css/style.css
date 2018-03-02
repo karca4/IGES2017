@@ -218,7 +218,6 @@ tbody{
   margin-top: 60px;
 }
 
-<<<<<<< HEAD
 #coll{
     font-size: 20px;
 }
@@ -237,7 +236,9 @@ tbody{
     position: relative;
     top: -90px;
 }
-=======
 
->>>>>>> e950dc5be16b918c1870f1a9918a04015187a8df
-
+.tablePrestiti{
+    position: relative;
+    top: 20px;
+    left: -150px;
+}

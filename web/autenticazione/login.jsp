@@ -9,7 +9,7 @@ String message = (String) request.getAttribute("message");
     <body>
         <%@include file="../skeleton-pages/header.jsp" %>
         
-        <div class="container-fluid" style="padding: 90px; margin-bottom: 200px;">
+        <div class="container-fluid" style="padding: 90px; margin-bottom: 160px;">
                 <div class="row text-center" >               
                      <div class="center bg-light col-md-offset-4 col-md-4" id="box">
                       <h2>Login</h2>

@@ -44,7 +44,13 @@ public class CercaPrestitiUtenteServlet extends HttpServlet{
         
         if(prestiti == null){
             message = "Nessun prestito associato all'utente.";
+            
+            System.out.println("Nessun prestito");
+            
         }else{
+            
+            System.out.println("Qualche prestito");
+            
             message = "correct";
         }       
 

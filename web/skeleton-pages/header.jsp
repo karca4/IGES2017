@@ -4,7 +4,7 @@
       <div class="container">
           <!-- NOSTRO LOGO -->
         <a class="navbar-brand" href="../skeleton-pages/index.jsp">
-                        <img src="../template/img/logo-with-name.png" alt="" height="38">
+            <img src="../template/img/logo.png" alt="" height="50" width="150">
                     </a>
           
           <!--<a id="coll" class="" style="text-decoration: none; color: black;" href="">Cerca</a>-->
