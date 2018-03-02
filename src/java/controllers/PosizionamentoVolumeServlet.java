@@ -6,11 +6,8 @@
 package controllers;
 
 import entities.Copia;
-import entities.Volume;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +19,8 @@ import managers.ManagerGestioneLibri;
  *
  * @author carmi
  */
-@WebServlet(name = "RecuperaVolumiServlet", urlPatterns = {"/gestione/posizionamento"})
-public class RecuperaVolumiServlet extends HttpServlet {
+@WebServlet(name = "PosizionamentoVolumeServlet", urlPatterns = {"/gestioneLibri/position"})
+public class PosizionamentoVolumeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,13 +36,32 @@ public class RecuperaVolumiServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         ManagerGestioneLibri managerGestioneLibri = new ManagerGestioneLibri();
-        List<Volume> volumi = managerGestioneLibri.getVolumiNonPosizionati();
-        List<Copia> copie = managerGestioneLibri.getCopie();
+        String volumeId, numRegistrazione, numScaffale;
+        int posizione;
         
-        request.setAttribute("volumi", volumi);
-        request.setAttribute("copie", copie);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("../gestioneLibri/posizionamentoVolume.jsp");
-        dispatcher.forward(request, response); 
+        String scelta = request.getParameter("scelta");
+        switch(scelta){
+            case "posiziona":
+                volumeId = request.getParameter("volumeId");
+                numRegistrazione = request.getParameter("numRegistrazione");
+                numScaffale = request.getParameter("numScaffale");
+                posizione = Integer.parseInt(request.getParameter("posizione"));
+                
+                Copia copia = new Copia();
+                copia.setNumeroRegistrazione(numRegistrazione);
+                copia.setNumeroScaffale(numScaffale);
+                copia.setPosizione(posizione);
+                copia.setCodiceVolume(volumeId);
+                copia.setDisponibilita(true);
+                System.out.println("Inserimento della copia: "+managerGestioneLibri.insertCopia(copia));
+                break;
+            case "elimina":
+                volumeId = request.getParameter("volumeId");
+                System.out.println("Rimozione della copia: "+managerGestioneLibri.removeCopia(volumeId));
+                break;
+        }
+        
+        response.sendRedirect(request.getContextPath()+"/gestione/posizionamento");
     }
 
     /**

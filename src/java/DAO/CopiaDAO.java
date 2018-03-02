@@ -6,7 +6,6 @@
 package DAO;
 
 import entities.Copia;
-import entities.Libro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +17,8 @@ import utils.DriverManagerConnectionPool;
 public class CopiaDAO extends AbstractDAO<Copia>{
 
     private final String doRetriveById = "Call RicercaCopia(?)";
+    private final String doRetriveAllQuery = "Select * from copia";
+    private final String doInsertQuery = "INSERT INTO copia(NumeroRegistrazione,NumeroScaffale,Posizione,CodiceVolume,Disponibilità)" + "VALUES(?,?,?,?,?);";
 
     @Override
     public Copia doRetriveById(Object... id) {
@@ -68,8 +69,34 @@ public class CopiaDAO extends AbstractDAO<Copia>{
     }
 
     @Override
-    public int doInsert(Copia entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int doInsert(Copia copia) {
+        try{
+            Connection con = DriverManagerConnectionPool.getConnection();            
+            PreparedStatement prst = con.prepareStatement(doInsertQuery,PreparedStatement.RETURN_GENERATED_KEYS);
+            
+            prst.setString(1,copia.getNumeroRegistrazione());
+            prst.setString(2,copia.getNumeroScaffale());
+            prst.setInt(3, copia.getPosizione());
+            prst.setString(4, copia.getCodiceVolume());
+            prst.setBoolean(5, copia.isDisponibilita());
+            try{
+                prst.execute();
+                con.commit();
+                ResultSet rs = prst.getGeneratedKeys();
+                
+                return 1;
+            } catch(SQLException e){
+                con.rollback();
+                e.printStackTrace();
+                return -1;
+            } finally {
+                prst.close();
+                DriverManagerConnectionPool.releaseConnection(con);
+            }
+            
+        } catch(SQLException e){
+            return -1;
+        }
     }
 
     @Override
@@ -79,7 +106,37 @@ public class CopiaDAO extends AbstractDAO<Copia>{
 
     @Override
     public List<Copia> doRetriveAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Copia> copie = new ArrayList<>();
+        
+         try (Connection con = DriverManagerConnectionPool.getConnection()) {
+            PreparedStatement prst = con.prepareStatement(doRetriveAllQuery);            
+
+            try (ResultSet rs = prst.executeQuery()) { 
+                con.commit();
+                while (rs.next()) {
+                    Copia c = new Copia();
+                    c.setNumeroRegistrazione(rs.getString("NumeroRegistrazione"));
+                    c.setNumeroScaffale(rs.getString("NumeroScaffale"));
+                    c.setPosizione(rs.getInt("Posizione"));
+                    c.setCodiceVolume(rs.getString("CodiceVolume"));
+                    c.setDisponibilita(rs.getBoolean("Disponibilità"));
+                    copie.add(c);
+                }
+                rs.close();
+                
+                
+            } catch (SQLException e ){
+                con.rollback();
+            } finally{
+                DriverManagerConnectionPool.releaseConnection(con);                
+                prst.close();
+                return copie;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return copie;
     }
     
     
