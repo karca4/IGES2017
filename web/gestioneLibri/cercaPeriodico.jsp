@@ -39,7 +39,7 @@
                             %>
                             
                             <h3 class="widget-header" style="margin-left: 270px; margin-top: 10px;">Si ricorda che i periodici sono di sola consultazione.</h3>
-                            <table class="table table-responsive table-striped product-dashboard-table">
+                            <table class="table table-responsive table-striped product-dashboard-table tableU">
                                 <thead>
                                     <tr>
                                         <th style="padding-left: 30px;">Copertina</th>

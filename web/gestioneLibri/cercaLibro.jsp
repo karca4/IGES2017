@@ -36,7 +36,7 @@
                                 libri = (ArrayList<Libro>) request.getAttribute("libri");
                             %>
                                 
-                            <table class="table table-responsive table-striped product-dashboard-table">
+                            <table class="table table-responsive table-striped product-dashboard-table tableU">
                                 <thead>
                                     <tr>
                                         <%
