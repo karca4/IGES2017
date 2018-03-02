@@ -24,15 +24,15 @@
                             <h3 class="widget-header"></h3>
 
                             <%
-                                
-                                String message = (String) request.getAttribute("message");
+                                String message="";
+                                if(request.getParameterMap().containsKey("message"))
+                                    message = (String) request.getAttribute("message");
                                 if (!message.equals("correct")) {
 
                             %>
                                 <h3 class="widget-header" style="margin-left: 300px; margin-bottom: 100px; margin-top: 40px;"><%=message%></h3>
                             <%
-                            } else {
-                                
+                            } else{
                                 libri = (ArrayList<Libro>) request.getAttribute("libri");
                             %>
                                 
