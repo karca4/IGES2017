@@ -1,19 +1,13 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-    </open-files>
-</project-private>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/inserimentoLibro.jsp</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/cercaManuale.jsp</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/inserimentoManuale.jsp</file>
             <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/posizionamentoVolume.jsp</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/inserimentoPeriodico.jsp</file>
         </group>
     </open-files>
 </project-private>
->>>>>>> 6790e022d1d18121e3c1969420b510e12e732386

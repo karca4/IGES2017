@@ -77,6 +77,13 @@ public class Utente {
     public String toString() {
         return this.getClass().getName();
     }
+    
+    /*
+    public int getNumeroTessera() {
+        return numeroTessera;
+    }
+    */
+    
 
 
     @Override

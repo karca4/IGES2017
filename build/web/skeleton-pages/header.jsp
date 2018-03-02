@@ -25,8 +25,7 @@
                                 </a>
                                 <!-- Dropdown list -->
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Visualizza Prenotazioni</a>
-                                    <a class="dropdown-item" href="#">Visualizza Autori</a>
+                                    <a class="dropdown-item" href="<%=application.getContextPath()%>/utente/prestiti">I miei prestiti</a>
                                      <a class="dropdown-item" href="<%=application.getContextPath()%>/autenticazione/logout">Logout</a>
                                 </div>
                             </li>
