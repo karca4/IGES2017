@@ -1,30 +1,7 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Users/umbertopicariello/NetBeansProjects/IGES2017/src/java/DAO/PrestitoDAO.java</file>
-            <file>file:/Users/umbertopicariello/NetBeansProjects/IGES2017/web/gestioneLibri/inserimentoPeriodico.jsp</file>
-            <file>file:/Users/umbertopicariello/NetBeansProjects/IGES2017/src/java/controllers/InserimentoNuovoPrestito.java</file>
-            <file>file:/Users/umbertopicariello/NetBeansProjects/IGES2017/web/gestionePrestiti/homePrestiti.jsp</file>
-            <file>file:/Users/umbertopicariello/NetBeansProjects/IGES2017/src/java/managers/ManagerPrestiti.java</file>
-            <file>file:/Users/umbertopicariello/NetBeansProjects/IGES2017/src/java/controllers/PrestitiInRitardoServlet.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/inserimentoLibro.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/cercaManuale.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/inserimentoManuale.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/posizionamentoVolume.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/inserimentoPeriodico.jsp</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> f5610741fb2fcfacc0ab59ae93cca4b867d707c6

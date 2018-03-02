@@ -7,8 +7,6 @@
             <img src="../template/img/logo.png" alt="" height="50" width="150">
                     </a>
           
-          <!--<a id="coll" class="" style="text-decoration: none; color: black;" href="">Cerca</a>-->
-          
           <%  if ( (request.getSession().getAttribute("persona") == null ) &&  ( request.getSession().getAttribute("bibliotecario") == null )) {
                                     %>
                                     
@@ -43,15 +41,12 @@
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimentoLibro">Carica Libro</a>
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimentoManuale">Carica Manuale</a>
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/inserimentoPeriodico">Carica Periodico</a>
-<<<<<<< HEAD
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/posizionamento">Posiziona Volume</a>
                                     <a class="dropdown-item" href="../gestionePrestiti/homePrestiti.jsp">Sezione Prestiti</a>
-=======
                                     <hr>
                                     <a class="dropdown-item" href="<%=application.getContextPath()%>/gestione/posizionamento">Posizionamento</a>
                                     <a class="dropdown-item" href="../skeleton-pages/homePrestiti.jsp">Sezione Prestiti</a>
                                     <hr>
->>>>>>> f5610741fb2fcfacc0ab59ae93cca4b867d707c6
                                    <a class="dropdown-item" href="<%=application.getContextPath()%>/autenticazione/logout">Logout</a>
                                 </div>
                             </li>
