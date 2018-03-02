@@ -37,7 +37,7 @@
                                 manuali = (ArrayList<Manuale>) request.getAttribute("manuali");
                             %>
                                 
-                            <table class="table table-responsive table-striped product-dashboard-table">
+                            <table class="table table-responsive table-striped product-dashboard-table tableU">
                                 <thead>
                                     <tr>
                                         <%
