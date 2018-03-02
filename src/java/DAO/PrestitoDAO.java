@@ -5,16 +5,19 @@
  */
 package DAO;
 
-import entities.Libro;
 import entities.Prestito;
+import entities.Volume;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 import utils.DriverManagerConnectionPool;
 
 
@@ -32,18 +35,26 @@ public class PrestitoDAO extends AbstractDAO<Prestito>{
         
         try {
             Connection con = DriverManagerConnectionPool.getConnection();
-            PreparedStatement prst = con.prepareStatement(doRetriveByNumTessQuery);
+            //PreparedStatement prst = con.prepareStatement(doRetriveByNumTessQuery);
+            PreparedStatement prst = con.prepareStatement(doRetriveByNumTessInfoQuery);
             prst.setInt(1, numTess);
+            
+            Date dataO = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"),Locale.ITALY).getTime();
+            long time = dataO.getTime();
             
             try {
                 ResultSet rs = prst.executeQuery();
                 
                 while (rs.next()) {
+                    
                     Calendar dataPrestito = new GregorianCalendar();
                     dataPrestito.setTimeInMillis(rs.getDate("DataPrestito").getTime());
                     Calendar dataRestituzione = new GregorianCalendar();
                     dataRestituzione.setTimeInMillis(rs.getDate("DataRestituzione").getTime());
-                    Prestito prestito = new Prestito(rs.getInt("NumTessUtente"), rs.getString("NumRegCopia"), rs.getString("NumScafCopia"), rs.getInt("PosCopia"), dataPrestito, dataRestituzione);
+                    long dataR = rs.getDate("DataRestituzione").getTime();
+                    Volume volume = new Volume(rs.getString("Codice"), rs.getString("Titolo"), rs.getInt("Edizione"), rs.getString("DataPubblicazione"), rs.getInt("DurataMaxPrestito"), rs.getString("Lingua"), rs.getString("DenominazioneEditore"), rs.getString("CittaEditore"));
+                    Prestito prestito = new Prestito(rs.getInt("NumTessUtente"), rs.getString("NumRegCopia"), rs.getString("NumScafCopia"), rs.getInt("PosCopia"), dataPrestito, dataRestituzione, volume);
+                    prestito.setStatus(prestito.getStatus(time, dataR));
                     prestiti.add(prestito);
                 }
                 

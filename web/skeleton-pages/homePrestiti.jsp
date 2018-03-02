@@ -1,3 +1,5 @@
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="entities.Prestito"%>
@@ -56,32 +58,58 @@
                         
                     <%
                                 
-                        String message = (String) request.getAttribute("message");
-                        if (!message.equals("correct")) {
+                        if(request.getAttribute("message") != null){
+                            String message = (String) request.getAttribute("message");
+                            if (!message.equals("correct")) {
 
                     %>
                     
                         <h3 class="widget-header" style="margin-left: 300px; margin-bottom: 100px; margin-top: 40px;"><%=message%></h3>
                     <%
-                        } else {
-                        
-                            if(request.getAttribute("prestiti") != null){
-                                prestiti = (ArrayList<Prestito>) request.getAttribute("prestiti");
+                            } else {
+
+                                if(request.getAttribute("prestiti") != null){
+                                    prestiti = (ArrayList<Prestito>) request.getAttribute("prestiti");
+                                }
+
+
                             }
-                            
 
                         }
                     %>
                     
-                    <table class="table table-responsive table-striped product-dashboard-table">
+                    <table class="table table-responsive table-striped tablePrestiti">
                                 <thead>
                                     <tr>
-                                       <th>Copertina</th>
-                                        <th style="padding-left: 40px;">Descrizione</th>                                        
-                                        <th style="text-align: center;">Azioni</th>
+                                        <th style="text-align: center;">Dettaglio Dei Prestiti</th>
                                     </tr>
                                 </thead>
-                                <tbody>                                   
+                                <tbody>    
+                                    
+                                    
+                                    <%
+                                               
+                                        //int pageIndex = 0;
+                                        for (Prestito prestito : prestiti) {                                                                                   
+
+                                    %>
+                                    
+                                    
+                                    <tr>
+                                        <td align="center" valign="middle" class="product-details">
+                                            <h3 class="title"> <%= prestito.getVolume().getTitolo()%> </h3>
+                                            <span class="location"><strong>Data Prestito:</strong> <%= prestito.getDataPrestitoString() %></span>
+                                            <br/>
+                                            <span class="location"><strong>Data Restituzione:</strong> <%= prestito.getDataRestituzioneString() %></span>
+                                            <br/>
+                                            <span class="location"><strong>Stato:</strong> <span style="color: red;"> <%= prestito.getStato() %></span></span>
+
+                                    </tr>
+                                    <%
+                                           
+                                        }
+                                    %>
+                                    
                                     
                                 </tbody>
                             </table>

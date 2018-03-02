@@ -236,5 +236,13 @@ display: inline-table;
     position: relative;
     top: -90px;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6790e022d1d18121e3c1969420b510e12e732386
 
+.tablePrestiti{
+    position: relative;
+    top: 20px;
+    left: -150px;
+}
