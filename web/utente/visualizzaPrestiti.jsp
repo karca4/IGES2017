@@ -24,13 +24,15 @@
                 <div class="col-lg-10 offset-lg-1" style="text-align: center">
                     <h3 class="mb-3 mx-auto" style="text-align: center">I Tuoi Prestiti</h3>
                     <div class="divTableCenter">
-                        <table class="table table-responsive table-striped product-dashboard-table">
+                        <table class="table table-striped product-dashboard-table" >
                             <thead>
                                 <tr>
                                     <th>ISBN</th>
                                     <th>Titolo</th>
                                     <th>Edizione</th>
                                     <th>Casa Editrice</th>
+                                    <th>Città Casa Editrice</th>
+                                    <th>Lingua</th>
                                     <th>Data Prestito</th>
                                     <th>Data Restituzione</th>
                                 </tr>
@@ -45,6 +47,8 @@
                                     <th><%=p.getVolume().getTitolo()%></th>
                                     <th><%=p.getVolume().getEdizione()%></th>
                                     <th><%=p.getVolume().getDenominazioneEditore()%></th>
+                                    <th><%=p.getVolume().getCittaEditore()%></th>
+                                    <th><%=p.getVolume().getLingua()%></th>
                                     <th><%=p.getDataPrestitoString() %></th>
                                     <th><%=p.getDataRestituzioneString()%></th>
                                 </tr>
@@ -54,7 +58,7 @@
                             </tbody>
                         </table>
                     </div>
-                        <a href="../index.jsp"><button class="btn-secondary btn-md">Torna alla biblioteca</button></a>
+                        <a href="../index.jsp"><button class="btn-primary">Torna alla biblioteca</button></a>
                 </div>
             </div>
         </div>

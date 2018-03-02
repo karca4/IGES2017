@@ -245,10 +245,11 @@ display: inline-table;
 
 .divTableCenter{
     width:100%;
+    margin-top: 20px;
+    margin-bottom: 35px;
 }
 
 .divTableCenter table{
-    margin: 0 auto;
-    border: thin solid red;
-    width:100%;
+    text-align: center;
+    margin: 0px auto;
 }
