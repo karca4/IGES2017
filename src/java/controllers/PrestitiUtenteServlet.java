@@ -18,10 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import managers.ManagerUtente;
 
-/**
- *
- * @author carmi
- */
 @WebServlet(name = "PrestitiUtenteServlet", urlPatterns = {"/utente/prestiti"})
 public class PrestitiUtenteServlet extends HttpServlet {
 

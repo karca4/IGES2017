@@ -40,12 +40,14 @@ public class PrestitiInRitardoServlet extends HttpServlet{
         
         prestiti = managerPrestiti.cercaPrestitiDaRestituire();
         
+        System.out.println("prree: " + prestiti);
+        
         if(prestiti == null){
             message = "Nessun volume deve essere restituito.";
         }else{
             message = "correct";
         }       
-
+        
         request.setAttribute("messageAll", message);
         request.setAttribute("allPrestiti", prestiti);
         

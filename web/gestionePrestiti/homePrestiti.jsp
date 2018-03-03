@@ -13,6 +13,22 @@
     <%@include file="../skeleton-pages/head.jsp" %>
     <body>
         <%@include file="../skeleton-pages/header.jsp" %>
+        
+        <%
+            if(request.getAttribute("messageA") == "err"){
+            %>
+                <div class="container" style="background-color: #ff6347; text-align: center;" id="modifica">
+                    <h5 style="color: white;"> Errore durante la restituzione, riprova!</h5>
+                </div>
+            <%
+                }else if(request.getAttribute("messageA") != null){
+                %>
+                <div class="container" style="background-color: #537fcd; text-align: center;" id="modifica">
+                    <h5 style="color: white;"> Restituzione effettuata correttamente!</h5>
+                </div>
+              <%
+                }
+                %>
 
             <section class="user-profile section" style="margin-top: 170px; margin-bottom: 190px;">
             <div class="container">
@@ -94,28 +110,37 @@
                                 if(request.getAttribute("allPrestiti") != null){
                                     
                                     allPrestiti = (ArrayList<Prestito>) request.getAttribute("allPrestiti");
+
                                     }
                                 }
                             }
                             %>
 
+                            <%
+                                if(request.getAttribute("allPrestiti") != null){
+                                %>
                     
-                    <table id="ppp3" class="table table-responsive table-striped tableU tablePrestiti" style="  overflow-x: hidden;">
-                                <thead>
-                                    <%
-                                        if(request.getAttribute("allPrestiti") != null){
-                                        %>
-                                    <tr>
-                                        <th style="text-align: center;">Dettaglio Dei Prestiti</th>
-                                        <th style="text-align: center;">Azione</th>
-                                    </tr>
+                                <table id="ppp3" class="table table-responsive table-striped tableU tablePrestiti" style="  overflow-x: hidden; margin-bottom: 54px;">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">Dettaglio Dei Prestiti</th>
+                                            <th style="text-align: center;">Azione</th>
+                                        </tr>
                                     <%
                                         }else if(request.getAttribute("prestiti") != null){
                                         %>
-                                        <tr>
-                                            <th style="text-align: center;">Dettaglio Dei Prestiti</th>   
-                                        </tr>               
+                                        <table id="ppp3" class="table table-responsive table-striped tableU tablePrestiti" style="  overflow-x: hidden;">
+                                            <thead>
+                                            <tr>
+                                                <th style="text-align: center;">Dettaglio Dei Prestiti</th>   
+                                            </tr>               
                                         <%
+                                           }else{
+                                            %>
+                                            <table id="p" class="table table-responsive table-striped tableU tablePrestiti" style="overflow-x: hidden; margin-bottom: 4px;">
+                                            <thead>
+                                                  
+                                            <%
                                            }
                                             %>
                                 </thead>
@@ -191,3 +216,11 @@
         
  </body>
 </html>
+
+<script>
+             
+    $(document).ready(setTimeout(function () {
+       $("#modifica").hide();
+   }, 3000));
+
+</script>

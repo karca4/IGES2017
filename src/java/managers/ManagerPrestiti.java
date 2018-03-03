@@ -32,9 +32,6 @@ public class ManagerPrestiti {
         
         valReturn = prestitoDAO.doInsert(p);
         
-       System.out.println("Val inserisciPrestito: " + valReturn);
-
-        
         if(valReturn == 1){
             toReturn = "correct";
         }else if(valReturn == -1){
@@ -64,13 +61,13 @@ public class ManagerPrestiti {
         
         if(valReturn == 1){
             toReturn = "correct";
+        }else{
+            toReturn = "err";
         }
         
         if(toReturn == "" ){
             return null;
         }
-        
-        System.out.println("Stringa: " + toReturn);
         
         return toReturn;
     }
@@ -87,8 +84,6 @@ public class ManagerPrestiti {
         List<Prestito> allPrestiti = new ArrayList<Prestito>();
         
         allPrestiti = prestitoDAO.doRetriveAll();
-        
-        //System.out.println("PrestitiDaRestituire: " + allPrestiti);
         
         if(allPrestiti == null || allPrestiti.isEmpty()){
             return null;
@@ -107,8 +102,6 @@ public class ManagerPrestiti {
     public Collection<Prestito> cercaPrestitiUtente(int codTessera) {
         
         List<Prestito> allPrestiti = prestitoDAO.doRetriveByNumTess(codTessera);
-        
-        //System.out.println("AllPrestiti: " + allPrestiti);
         
         if(allPrestiti == null || allPrestiti.isEmpty()){
             return null;

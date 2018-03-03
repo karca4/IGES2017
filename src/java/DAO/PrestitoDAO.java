@@ -138,30 +138,30 @@ public class PrestitoDAO extends AbstractDAO<Prestito>{
     
     public int doDelete(String numRegCopia) {
         
-        try{
-            Connection con = DriverManagerConnectionPool.getConnection();            
-            PreparedStatement prst = con.prepareStatement(doDeleteQUery, PreparedStatement.RETURN_GENERATED_KEYS);
-            
-            prst.setString(1, numRegCopia);
-           
-            try{
-                prst.execute();
-                con.commit();
-                ResultSet rs = prst.getGeneratedKeys();
+        try {
+            Connection con = DriverManagerConnectionPool.getConnection();
+            try {
+
+                PreparedStatement prst = con.prepareStatement(doDeleteQUery);
+                prst.setString(1, numRegCopia);
                 
-                return 1;
-            } catch(SQLException e){
-                con.rollback();
-                e.printStackTrace();
-                return -1;
-            } finally {
+                prst.execute();  
+
+                con.commit();
                 prst.close();
+              
+                return 1;
+                
+            } catch (SQLException e) {
+                con.rollback();
+                return -1;
+            } finally{
                 DriverManagerConnectionPool.releaseConnection(con);
             }
-            
-        } catch(SQLException e){
+
+        } catch (SQLException e) {
             return -1;
-        }
+        }    
         
     }
 

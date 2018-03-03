@@ -91,9 +91,5 @@
         
         <%@include file="footer.jsp" %>
 
-        <script>
-
-
-        </script>
     </body>
 </html>

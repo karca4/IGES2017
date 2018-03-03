@@ -18,10 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import managers.ManagerGestioneLibri;
 
-/**
- *
- * @author carmi
- */
 @WebServlet(name = "RecuperaVolumiServlet", urlPatterns = {"/gestione/posizionamento"})
 public class RecuperaVolumiServlet extends HttpServlet {
 
