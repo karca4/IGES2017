@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/skeleton-pages/header.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/skeleton-pages/ricercaDaHome.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/skeleton-pages/index.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/cercaLibro.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/ricercaAvanzata.jsp</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/utils/DriverManagerConnectionPool.java</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestionePrestiti/homePrestiti.jsp</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/DAO/PrestitoDAO.java</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/test/DAO/AutoreDAOTest.java</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/controllers/PrestitiInRitardoServlet.java</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/managers/ManagerPrestiti.java</file>
         </group>
     </open-files>
 </project-private>

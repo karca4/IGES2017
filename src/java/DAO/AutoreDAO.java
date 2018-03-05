@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package DAO;
 
 import entities.Autore;
@@ -18,8 +19,6 @@ public class AutoreDAO extends AbstractDAO<Autore> {
 
     private final String doRetriveByNomeCognomeQuery = "Call RicercaAutore(?,?)";
     private final String doRetriveByLibroQuery = "SELECT * FROM scritto JOIN autore ON scritto.CodAutore = autore.CodiceFiscale WHERE scritto.CodVolume =?";
-    
-    
     private final String doRetriveAllQuery = "SELECT * FROM autore";
     private final String doRetriveByNomeQuery = "SELECT * FROM Autore WHERE nome = ? ";
     private final String doInsertQuery = "INSERT INTO Autore(nome) VALUES(?)";
@@ -31,7 +30,7 @@ public class AutoreDAO extends AbstractDAO<Autore> {
      * @return un autore se viene trovato, null atrimenti.
      */
     @Override
-    public Autore doRetriveById(Object... id) {
+    public Autore doRetriveById(Object... id) { 
         String nomeAutore = (String) id[0];
         String cognomeAutore = (String) id[1];
 
@@ -64,7 +63,6 @@ public class AutoreDAO extends AbstractDAO<Autore> {
         } catch (SQLException e) {
             return null;
         }
-
     }
 
     /**
@@ -146,6 +144,7 @@ public class AutoreDAO extends AbstractDAO<Autore> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+         
             return autori;
         
     }
