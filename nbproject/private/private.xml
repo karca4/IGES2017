@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/utils/DriverManagerConnectionPool.java</file>
             <file>file:/C:/workspaces/NetBeans/IGES2017/web/skeleton-pages/header.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/controllers/CercaLibroServlet.java</file>
             <file>file:/C:/workspaces/NetBeans/IGES2017/web/skeleton-pages/ricercaDaHome.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/nbproject/build-impl.xml</file>
             <file>file:/C:/workspaces/NetBeans/IGES2017/web/skeleton-pages/index.jsp</file>
             <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/cercaLibro.jsp</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestioneLibri/ricercaAvanzata.jsp</file>
         </group>
     </open-files>
 </project-private>

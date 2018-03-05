@@ -110,6 +110,7 @@ public class PrestitoDAO extends AbstractDAO<Prestito>{
                     Prestito prestito = new Prestito(rs.getInt("NumTessUtente"), rs.getString("NumRegCopia"), rs.getString("NumScafCopia"), rs.getInt("PosCopia"), dataPrestito, dataRestituzione, volume);
                     prestito.setStatus(prestito.getStatus(time, dataR));
                     prestito.setUtente(new UtenteDAO().doRetriveById(rs.getInt("NumTessUtente")));
+                    
                     prestiti.add(prestito);
                 }
                 

@@ -30,7 +30,7 @@ public class DriverManagerConnectionPool {
         String db = "biblioteca";
         //CAMBIATELO A SECONDA DELLE VOSTRE IMPOSTAZIONI
         String username = "root";
-        String password = "root";
+        String password = "";
 
         newConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db, username, password);
         newConnection.setAutoCommit(false);
