@@ -6,6 +6,7 @@
 package entities;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Volume {
     
@@ -183,5 +184,47 @@ public class Volume {
             return "Volume{" + "codice=" + codice + ", titolo=" + titolo + ", edizione=" + edizione + ", dataPubblicazione=" + dataPubblicazione + ", durataMaxPrestito=" + durataMaxPrestito + ", lingua=" + lingua + ", denominazioneEditore=" + denominazioneEditore + ", cittaEditore=" + cittaEditore + '}';
         }
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Volume other = (Volume) obj;
+        if (this.edizione != other.edizione) {
+            return false;
+        }
+        if (this.durataMaxPrestito != other.durataMaxPrestito) {
+            return false;
+        }
+        if (!Objects.equals(this.codice, other.codice)) {
+            return false;
+        }
+        if (!Objects.equals(this.titolo, other.titolo)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataPubblicazione, other.dataPubblicazione)) {
+            return false;
+        }
+        if (!Objects.equals(this.lingua, other.lingua)) {
+            return false;
+        }
+        if (!Objects.equals(this.denominazioneEditore, other.denominazioneEditore)) {
+            return false;
+        }
+        if (!Objects.equals(this.cittaEditore, other.cittaEditore)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 }

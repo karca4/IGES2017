@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/utils/DriverManagerConnectionPool.java</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/web/gestionePrestiti/homePrestiti.jsp</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/DAO/PrestitoDAO.java</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/test/DAO/AutoreDAOTest.java</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/controllers/PrestitiInRitardoServlet.java</file>
-            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/managers/ManagerPrestiti.java</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/src/java/managers/ManagerGestioneLibri.java</file>
+            <file>file:/C:/workspaces/NetBeans/IGES2017/test/managers/ManagerGestioneLibriTest.java</file>
         </group>
     </open-files>
 </project-private>
