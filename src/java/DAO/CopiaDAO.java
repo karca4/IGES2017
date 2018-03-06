@@ -17,7 +17,7 @@ import utils.DriverManagerConnectionPool;
 public class CopiaDAO extends AbstractDAO<Copia>{
 
     private final String doRetriveById = "Call RicercaCopia(?)";
-    private final String doRetriveAllQuery = "select * from copia";
+    private final String doRetriveAllQuery = "SELECT * FROM copia";
     private final String doInsertQuery = "INSERT INTO copia(NumeroRegistrazione,NumeroScaffale,Posizione,CodiceVolume,Disponibilità)" + "VALUES(?,?,?,?,?);";
 
     @Override
@@ -103,43 +103,48 @@ public class CopiaDAO extends AbstractDAO<Copia>{
     public int doUpdate(Copia entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    
     @Override
-    public List<Copia> doRetriveAll() { 
+    public List<Copia> doRetriveAll() {
+        
         List<Copia> copie = new ArrayList<>();
         
-         try (Connection con = DriverManagerConnectionPool.getConnection()) {
-            PreparedStatement prst = con.prepareStatement(doRetriveAllQuery);            
+        try {
+            Connection con = DriverManagerConnectionPool.getConnection();
+            PreparedStatement prst = con.prepareStatement("select * from copia");
 
-            try (ResultSet rs = prst.executeQuery()) { 
-                //con.commit();
+            try {
+                ResultSet rs = prst.executeQuery();
+                
                 while (rs.next()) {
+                    
                     Copia c = new Copia();
                     c.setNumeroRegistrazione(rs.getString("NumeroRegistrazione"));
                     c.setNumeroScaffale(rs.getString("NumeroScaffale"));
                     c.setPosizione(rs.getInt("Posizione"));
-                    c.setCodiceVolume(rs.getString("CodiceVolume"));
-                    c.setDisponibilita(rs.getBoolean("Disponibilità"));
+                    c.setCodiceVolume(rs.getString("CodiceVolume")); 
+                    c.setDisponibilita(rs.getBoolean(5));
                     copie.add(c);
                 }
+                
                 rs.close();
                 
-                
-            } catch (SQLException e ){
+            } catch (SQLException e) {
                 con.rollback();
-            } finally{
-                DriverManagerConnectionPool.releaseConnection(con);                
+                
+            } finally {
                 prst.close();
-                System.out.println("************"+copie.size());
-                return copie;
+                DriverManagerConnectionPool.releaseConnection(con);
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-        return copie; 
+        
+        return copie;
+        
     }
-    
     
 
     
