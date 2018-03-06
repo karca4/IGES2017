@@ -6,6 +6,7 @@
 package utils;
 
 import entities.Libro;
+import entities.Volume;
 
 public class CriterioPerTitolo implements Criterio {
     
@@ -17,7 +18,7 @@ public class CriterioPerTitolo implements Criterio {
     
     @Override
     public boolean isValid(Object ob) {
-        Libro book = (Libro) ob;
+        Volume book = (Volume) ob;
         
         if (book.getTitolo().toLowerCase().contains(titolo.toLowerCase())) {
             return true;
