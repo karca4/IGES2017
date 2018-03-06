@@ -68,7 +68,7 @@
                                         <div class="form-group">
 
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-md btn-primary" style="margin-bottom: 15px !important;">Posiziona</button>
+                                                <button type="submit" class="btn btn-md btn-primary" style="margin-bottom: 15px !important;" name="posiziona">Posiziona</button>
                                             </div>
                                         </div>
 

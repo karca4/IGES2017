@@ -200,7 +200,7 @@
                                         <div class="form-group">
 
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-md btn-primary" style="margin-bottom: 15px !important;">Inserisci</button>
+                                                <button type="submit" class="btn btn-md btn-primary" style="margin-bottom: 15px !important;" id="insert">Inserisci</button>
                                             </div>
                                         </div>
 

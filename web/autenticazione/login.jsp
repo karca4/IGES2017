@@ -51,7 +51,7 @@ String message = (String) request.getAttribute("message");
                                         <div class="form-group">
 
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-md btn-primary pull-right" style="margin-bottom: 15px !important;">Accedi</button>
+                                                <button type="submit" class="btn btn-md btn-primary pull-right" style="margin-bottom: 15px !important;" id="Accedi">Accedi</button>
                                             </div>
                                         </div>
 
