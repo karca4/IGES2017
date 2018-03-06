@@ -38,7 +38,7 @@
                                 <thead>
                                     <tr>
                                         <%
-                                            if ( (request.getSession().getAttribute("bibliotecario") != null) || (request.getSession().getAttribute("persona") != null) ) {
+                                            if (request.getSession().getAttribute("bibliotecario") != null)  {
                                         %>
                                             <th>Copertina</th>
                                             <th style="padding-left: 40px;">Descrizione</th>                                        
@@ -134,13 +134,8 @@
                                                     %>
                                                         <button class="btn btn-main">Modifica</button>
                                                     <%
-                                                        }else if (request.getSession().getAttribute("persona") != null){
-                                                    %>
-                                                        <button class="btn btn-main">Prenota</button>
-                                                    <%
                                                         }
                                                     %>
-                                                      
                                                 </form>
                                             </div>
                                         </td>
