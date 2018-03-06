@@ -10,6 +10,10 @@ import java.util.List;
 public class Periodico extends Volume{
     private String frequenza;
     
+    public Periodico(){
+        
+    }
+    
     public Periodico(String codice, String titolo, int edizione, String dataPubblicazione, int durataMaxPrestito, String lingua, String denominazioneEditore, String cittaEditore, String frequenza) {
         super(codice, titolo, edizione, dataPubblicazione, durataMaxPrestito, lingua, denominazioneEditore, cittaEditore);
         this.frequenza = frequenza;
@@ -57,6 +61,10 @@ public class Periodico extends Volume{
 
     public List<Autore> getAutori() {
         return autori;
+    }
+
+    public void setFrequenza(String frequenza) {
+        this.frequenza = frequenza;
     }
 
     @Override

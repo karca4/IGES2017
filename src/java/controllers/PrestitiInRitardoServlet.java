@@ -8,7 +8,7 @@ package controllers;
 import entities.Prestito;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,14 +33,15 @@ public class PrestitiInRitardoServlet extends HttpServlet{
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        Collection<Prestito> prestiti = new ArrayList<>();
+        List<Prestito> prestiti = new ArrayList<>();
         String message;
         
         ManagerPrestiti managerPrestiti = new ManagerPrestiti();
         
         prestiti = managerPrestiti.cercaPrestitiDaRestituire();
         
-        System.out.println("prree: " + prestiti);
+        for(Prestito p:prestiti)
+            System.out.println("\n Prestito: " + p.getVolume().getTitolo());
         
         if(prestiti == null){
             message = "Nessun volume deve essere restituito.";

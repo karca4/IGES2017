@@ -5,7 +5,6 @@
  */
 package DAO;
 
-import entities.Manuale;
 import entities.Periodico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

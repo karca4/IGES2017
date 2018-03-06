@@ -100,6 +100,7 @@ public class ManagerGestioneLibri {
             } finally {
                 prst.close();
                 DriverManagerConnectionPool.releaseConnection(con);
+                return true;
             }
             
         } catch(SQLException e){

@@ -79,11 +79,9 @@ public class ManagerPrestiti {
      * @return una Collection di prestiti, null se c'è qualche 
      * errore.
      */
-    public Collection<Prestito> cercaPrestitiDaRestituire() {
+    public List<Prestito> cercaPrestitiDaRestituire() {
         
-        List<Prestito> allPrestiti = new ArrayList<Prestito>();
-        
-        allPrestiti = prestitoDAO.doRetriveAll();
+        List<Prestito> allPrestiti =  prestitoDAO.doRetriveAll();
         
         if(allPrestiti == null || allPrestiti.isEmpty()){
             return null;

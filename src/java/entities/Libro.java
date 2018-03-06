@@ -5,13 +5,17 @@
  */
 package entities;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Libro extends Volume{
     
     protected String genere;
     protected String tipo;
+    
+    public Libro(){
+        
+    }
     
     public Libro(String genere, String tipo, String codice, String titolo, int edizione, String dataPubblicazione, int durataMaxPrestito, String lingua, String denominazioneEditore, String cittaEditore) {
         super(codice, titolo, edizione, dataPubblicazione, durataMaxPrestito, lingua, denominazioneEditore, cittaEditore);
@@ -63,5 +67,30 @@ public class Libro extends Volume{
     public String toString() {
              return "Libro{" + super.toString() + "genere=" + genere + ", tipo=" + tipo + '}';
     }
+
+    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Libro other = (Libro) obj;
+        if (!Objects.equals(this.genere, other.genere)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipo, other.tipo)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
         
 }
