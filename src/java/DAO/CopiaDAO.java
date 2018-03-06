@@ -17,7 +17,7 @@ import utils.DriverManagerConnectionPool;
 public class CopiaDAO extends AbstractDAO<Copia>{
 
     private final String doRetriveById = "Call RicercaCopia(?)";
-    private final String doRetriveAllQuery = "Select * from copia";
+    private final String doRetriveAllQuery = "select * from copia";
     private final String doInsertQuery = "INSERT INTO copia(NumeroRegistrazione,NumeroScaffale,Posizione,CodiceVolume,Disponibilità)" + "VALUES(?,?,?,?,?);";
 
     @Override
@@ -105,14 +105,14 @@ public class CopiaDAO extends AbstractDAO<Copia>{
     }
 
     @Override
-    public List<Copia> doRetriveAll() {
+    public List<Copia> doRetriveAll() { 
         List<Copia> copie = new ArrayList<>();
         
          try (Connection con = DriverManagerConnectionPool.getConnection()) {
             PreparedStatement prst = con.prepareStatement(doRetriveAllQuery);            
 
             try (ResultSet rs = prst.executeQuery()) { 
-                con.commit();
+                //con.commit();
                 while (rs.next()) {
                     Copia c = new Copia();
                     c.setNumeroRegistrazione(rs.getString("NumeroRegistrazione"));
@@ -130,13 +130,14 @@ public class CopiaDAO extends AbstractDAO<Copia>{
             } finally{
                 DriverManagerConnectionPool.releaseConnection(con);                
                 prst.close();
+                System.out.println("************"+copie.size());
                 return copie;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return copie;
+        return copie; 
     }
     
     

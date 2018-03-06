@@ -10,6 +10,10 @@ import java.util.List;
 public class Manuale extends Volume{
     private String categoria;
     
+    public Manuale(){
+        
+    }
+    
     public Manuale(String codice, String titolo, int edizione, String dataPubblicazione, int durataMaxPrestito, String lingua, String denominazioneEditore, String cittaEditore, String categoria) {
         super(codice, titolo, edizione, dataPubblicazione, durataMaxPrestito, lingua, denominazioneEditore, cittaEditore);
         this.categoria = categoria;
@@ -58,6 +62,12 @@ public class Manuale extends Volume{
     public List<Autore> getAutori() {
         return autori;
     }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    
+    
 
     @Override
     public String toString() {

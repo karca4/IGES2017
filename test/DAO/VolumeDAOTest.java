@@ -41,7 +41,7 @@ public class VolumeDAOTest {
             volume.setEdizione(1);
             volume.setDataPubblicazione("25-12-2018");
             volume.setLingua("italiano");
-            
+            System.out.println("UNIT TEST - VolumeDAO");
         } catch (SQLException ex) {
             Logger.getLogger(VolumeDAOTest.class.getName()).log(Level.SEVERE, null, ex);
         }
