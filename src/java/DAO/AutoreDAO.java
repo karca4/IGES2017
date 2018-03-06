@@ -39,6 +39,8 @@ public class AutoreDAO extends AbstractDAO<Autore> {
             PreparedStatement prst = con.prepareStatement(doRetriveByNomeCognomeQuery);
             prst.setString(1, nomeAutore);
             prst.setString(2, cognomeAutore);
+            
+            System.out.println("Entro??");
 
             try (ResultSet rs = prst.executeQuery()) {
                 con.commit();
@@ -74,6 +76,8 @@ public class AutoreDAO extends AbstractDAO<Autore> {
     @Override
     public List<Autore> doRetriveAll() {
         List<Autore> autori = new ArrayList<>();
+        
+        System.out.println("allll??");
         
          try (Connection con = DriverManagerConnectionPool.getConnection()) {
             PreparedStatement prst = con.prepareStatement(doRetriveAllQuery);            
@@ -118,8 +122,7 @@ public class AutoreDAO extends AbstractDAO<Autore> {
          try (Connection con = DriverManagerConnectionPool.getConnection()) {
             PreparedStatement prst = con.prepareStatement(doRetriveByLibroQuery);
             
-            String daPassare = isbn + "\r";//da notare
-            
+            String daPassare = isbn;//da notare
             prst.setString(1, daPassare);
             
             try (ResultSet rs = prst.executeQuery()) { 

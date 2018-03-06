@@ -61,7 +61,7 @@ public class CercaLibroServlet extends HttpServlet {
             } else if (criterioName.equalsIgnoreCase("autore")) {
 
                 criterio = new CriterioPerAutore(searchKey);
-
+                
             } else if (criterioName.equals("editore")) {
 
                 criterio = new CriterioPerEditore(searchKey);
