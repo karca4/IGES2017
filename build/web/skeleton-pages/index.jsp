@@ -62,8 +62,8 @@
               <div class="features-icons-icon d-flex">
                 <i class="icon-book-open m-auto text-primary"></i>
               </div>
-              <h3>2. Richiedi il prestito</h3>
-              <p class="lead mb-0">Richiedi il prestito del tuo libro online in pochi passi!</p>
+              <h3>2. Visualizzane i dettagli</h3>
+              <p class="lead mb-0"> Visualizza le informazioni riguardanti il tuo libro preferito!</p>
             </div>
           </div>
           <div class="col-lg-4">
