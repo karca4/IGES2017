@@ -28,6 +28,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import utils.Criterio;
+import utils.CriterioPerTitolo;
 import utils.DriverManagerConnectionPool;
 
 /**
@@ -38,6 +39,7 @@ public class ManagerGestioneLibriTest {
     private static Connection con;
     private static ManagerGestioneLibri managerGestioneLibri;
     private static Volume volume;
+    private static Copia copia;
     
     public ManagerGestioneLibriTest() {
     }
@@ -53,6 +55,13 @@ public class ManagerGestioneLibriTest {
             volume.setEdizione(1);
             volume.setDataPubblicazione("25-12-2018");
             volume.setLingua("italiano");
+            copia = new Copia();
+            copia.setNumeroRegistrazione("CCC");
+            copia.setNumeroScaffale("Z");
+            copia.setPosizione(99);
+            copia.setDisponibilita(true);
+            copia.setCodiceVolume("ManualeAutori");
+            managerGestioneLibri.insertCopia(copia);
             System.out.println("\nUNIT TEST - ManagerGestioneLibri");
         } catch (SQLException ex) {
             Logger.getLogger(ManagerGestioneLibriTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,6 +98,8 @@ public class ManagerGestioneLibriTest {
             prst6.setString(1, "Manuale");
             prst6.setString(2, "AAA");;
             prst6.execute();
+            
+            managerGestioneLibri.removeCopia(copia.getCodiceVolume());
             con.commit();
             prst.close(); 
             DriverManagerConnectionPool.releaseConnection(con);
@@ -215,13 +226,11 @@ public class ManagerGestioneLibriTest {
     @Test
     public void testCercaLibro() {
         System.out.println("cercaLibro");
-        Criterio c = null;
+        CriterioPerTitolo c = new CriterioPerTitolo("a");
         ManagerGestioneLibri instance = new ManagerGestioneLibri();
-        Collection<Libro> expResult = null;
+        int expResult = 1;
         Collection<Libro> result = instance.cercaLibro(c);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result.size());
     }
 
     /**
@@ -230,13 +239,11 @@ public class ManagerGestioneLibriTest {
     @Test
     public void testCercaManuale() {
         System.out.println("cercaManuale");
-        Criterio c = null;
+        CriterioPerTitolo c = new CriterioPerTitolo("m");
         ManagerGestioneLibri instance = new ManagerGestioneLibri();
-        Collection<Manuale> expResult = null;
+        int expResult = 1;
         Collection<Manuale> result = instance.cercaManuale(c);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result.size());
     }
 
     /**
@@ -245,13 +252,11 @@ public class ManagerGestioneLibriTest {
     @Test
     public void testCercaPeriodico() {
         System.out.println("cercaPeriodico");
-        Criterio c = null;
+        CriterioPerTitolo c = new CriterioPerTitolo("periodico");
         ManagerGestioneLibri instance = new ManagerGestioneLibri();
-        Collection<Periodico> expResult = null;
+        int expResult = 1;
         Collection<Periodico> result = instance.cercaPeriodico(c);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result.size());
     }
 
     /**
@@ -297,7 +302,7 @@ public class ManagerGestioneLibriTest {
     public void testGetCopie() {
         System.out.println("getCopie");
         ManagerGestioneLibri instance = new ManagerGestioneLibri();
-        int expResult = 4;
+        int expResult = 5;  //nel DB ho attualmente 4 copie +1 nel sutUp del test
         List<Copia> result = instance.getCopie();
         assertEquals(expResult, result.size());
     }
@@ -309,11 +314,9 @@ public class ManagerGestioneLibriTest {
     public void testGetVolumiNonPosizionati() {
         System.out.println("getVolumiNonPosizionati");
         ManagerGestioneLibri instance = new ManagerGestioneLibri();
-        List<Volume> expResult = null;
+        int expResult = 4; //al momento ho 4 volumi non ancora posizionati nel DB (+1 che lo inserisco nel test insertVolume -  +1 nuova copia)
         List<Volume> result = instance.getVolumiNonPosizionati();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result.size());
     }
 
     /**
@@ -322,13 +325,10 @@ public class ManagerGestioneLibriTest {
     @Test
     public void testInsertCopia() {
         System.out.println("insertCopia");
-        Copia copia = null;
         ManagerGestioneLibri instance = new ManagerGestioneLibri();
-        int expResult = 0;
+        int expResult = 1;
         int result = instance.insertCopia(copia);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -337,13 +337,11 @@ public class ManagerGestioneLibriTest {
     @Test
     public void testRemoveCopia() {
         System.out.println("removeCopia");
-        String idVolume = "";
+        String idVolume = "ManualeAutori";
         ManagerGestioneLibri instance = new ManagerGestioneLibri();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.removeCopia(idVolume);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

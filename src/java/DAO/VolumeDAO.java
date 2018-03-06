@@ -141,6 +141,7 @@ public class VolumeDAO extends AbstractDAO<Volume>{
     }
     
     
+    
     public List<Volume> doRetriveNoPositioned() {
         List<Volume> volumi = new ArrayList<>();
         
@@ -148,7 +149,6 @@ public class VolumeDAO extends AbstractDAO<Volume>{
             PreparedStatement prst = con.prepareStatement(doRetriveAllNoPositionedQuery);            
 
             try (ResultSet rs = prst.executeQuery()) { 
-                con.commit();
                 while (rs.next()) {
                     Volume v = new Volume();
                     v.setCodice(rs.getString("Codice"));
@@ -164,12 +164,11 @@ public class VolumeDAO extends AbstractDAO<Volume>{
                 rs.close();
                 
                 
-            } catch (SQLException e ){
+            } catch (SQLException e){
                 con.rollback();
             } finally{
                 DriverManagerConnectionPool.releaseConnection(con);                
                 prst.close();
-                return volumi;
             }
 
         } catch (SQLException e) {
@@ -177,8 +176,7 @@ public class VolumeDAO extends AbstractDAO<Volume>{
         }
         return volumi;
     }
-    
-    
+      
     
     
 }
