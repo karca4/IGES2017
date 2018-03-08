@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/test/GestioneLibri/InserisciLibroTest.java</file>
+            <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/test/Gestione/ManualeTest.java</file>
+            <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/web/gestioneLibri/cercaLibro.jsp</file>
             <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/web/skeleton-pages/index.jsp</file>
             <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/web/gestioneLibri/posizionamentoVolumeForm.jsp</file>
+            <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/test/Gestione/PeriodicoTest.java</file>
+            <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/test/Prestiti/PrestitoTest.java</file>
+            <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/test/Gestione/LibroTest.java</file>
             <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/web/index.jsp</file>
+            <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/src/java/controllers/CercaLibroServlet.java</file>
+            <file>file:/C:/Users/Federico%20Vitale/Desktop/Projects/IGES2017/src/java/utils/CriterioPerManuale.java</file>
         </group>
     </open-files>
 </project-private>

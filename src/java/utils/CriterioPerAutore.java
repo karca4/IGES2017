@@ -23,6 +23,7 @@ public class CriterioPerAutore implements Criterio{
         Libro book = (Libro) ob;
      
         for(Autore a : book.getAutori()){
+            
             if(a.getNome().toLowerCase().contains(autore.toLowerCase())){
                 return true;
             }

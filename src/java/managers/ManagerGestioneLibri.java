@@ -145,7 +145,6 @@ public class ManagerGestioneLibri {
      * errore.
      */
     public Collection<Libro> cercaLibro(Criterio c) {
-        //int limit = 0;
         
         List<Libro> listToReturn = new ArrayList<>();
         List<Libro> allBooks = libroDAO.doRetriveAll();
@@ -155,12 +154,8 @@ public class ManagerGestioneLibri {
         }
         
         for (int i = 0; i < allBooks.size(); i++) {
-            /*if(limit == 3 ){ //per ora limitato a 3 libri
-                break;
-            }*/
             if (c.isValid(allBooks.get(i))) {
                 listToReturn.add(allBooks.get(i));
-                //limit++;
             }
         }
 

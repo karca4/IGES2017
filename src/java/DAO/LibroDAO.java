@@ -19,6 +19,7 @@ public class LibroDAO extends AbstractDAO<Libro>{
     private final String doRetriveByTitolo = "call ricercaLibro(?)";
     private final String doRetriveAll = "select volume.*, libro.tipo, libro.genere from libro join volume on volume.codice = libro.codvolume";
     private final String doRetriveAllWithPosition = "select volume.*, libro.tipo, libro.genere, copia.* from libro join volume on volume.codice = libro.codvolume join copia on volume.Codice = copia.CodiceVolume";
+    
     private final String doInsertQuery = "INSERT INTO libro(CodVolume,Genere,Tipo)" + "VALUES(?,?,?);";
     
     @Override
@@ -112,7 +113,6 @@ public class LibroDAO extends AbstractDAO<Libro>{
                     
                     Libro book = new Libro(rs.getString("genere"), rs.getString("tipo"), rs.getString("Codice"), rs.getString("Titolo"), rs.getInt("Edizione"), rs.getString("DataPubblicazione"), rs.getInt("DurataMaxPrestito"), rs.getString("Lingua"), rs.getString("DenominazioneEditore"), rs.getString("CittaEditore"));
                     String isbn = rs.getString("Codice");
-                 
                     book.setAutori(new AutoreDAO().doRetriveByLibro(isbn)); 
                     book.setCollana(new CollanaDAO().doRetriveById(isbn));
                     book.setCopie(new CopiaDAO().doRetriveAllById(isbn));
