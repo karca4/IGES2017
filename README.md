@@ -1,4 +1,4 @@
-<b><h1>BibTech</h1><br></b>
+<b><h1>BibTech</h1></b>
 <h2>Team:<br>
   Carmine Capo,<br>
   Umberto Picariello,<br>
