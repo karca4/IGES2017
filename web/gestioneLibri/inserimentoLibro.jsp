@@ -31,7 +31,7 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="codice" pattern="[0-9]{13}" required placeholder="Codice*" class="form-control" type="text">
+                                                    <input name="codice" pattern="[0-9]{13}" required placeholder="Codice*" class="form-control" type="number">
                                                 </div>
                                             </div>
                                         </div>
@@ -49,7 +49,7 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="edizione" required placeholder="Edizione*" class="form-control" type="text">
+                                                    <input name="edizione" required placeholder="Edizione*" class="form-control" type="number">
                                                 </div>
                                             </div>
                                         </div>

@@ -75,7 +75,6 @@ public class AutoreDAO extends AbstractDAO<Autore> {
     public List<Autore> doRetriveAll() {
         List<Autore> autori = new ArrayList<>();
         
-        System.out.println("allll??");
         
          try (Connection con = DriverManagerConnectionPool.getConnection()) {
             PreparedStatement prst = con.prepareStatement(doRetriveAllQuery);            

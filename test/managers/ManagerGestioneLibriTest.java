@@ -228,7 +228,7 @@ public class ManagerGestioneLibriTest {
         System.out.println("cercaLibro");
         CriterioPerTitolo c = new CriterioPerTitolo("a");
         ManagerGestioneLibri instance = new ManagerGestioneLibri();
-        int expResult = 1;
+        int expResult = 0;
         Collection<Libro> result = instance.cercaLibro(c);
         assertEquals(expResult, result.size());
     }
@@ -239,7 +239,7 @@ public class ManagerGestioneLibriTest {
     @Test
     public void testCercaManuale() {
         System.out.println("cercaManuale");
-        CriterioPerTitolo c = new CriterioPerTitolo("m");
+        CriterioPerTitolo c = new CriterioPerTitolo("mm");
         ManagerGestioneLibri instance = new ManagerGestioneLibri();
         int expResult = 1;
         Collection<Manuale> result = instance.cercaManuale(c);
@@ -254,7 +254,7 @@ public class ManagerGestioneLibriTest {
         System.out.println("cercaPeriodico");
         CriterioPerTitolo c = new CriterioPerTitolo("periodico");
         ManagerGestioneLibri instance = new ManagerGestioneLibri();
-        int expResult = 1;
+        int expResult = 2;  //al momento ho un periodico nel DB, +1 che aggiungo nel metodo da testare prec
         Collection<Periodico> result = instance.cercaPeriodico(c);
         assertEquals(expResult, result.size());
     }

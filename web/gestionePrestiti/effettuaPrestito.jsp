@@ -76,7 +76,7 @@
                                                           <div class="col-md-12">
                                                               <div class="input-group">
                                                                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                                  <input name="scaffale" required placeholder="Codice Scaffale" class="form-control" type="text">
+                                                                  <input name="scaffale" required placeholder="Codice Scaffale" class="form-control" type="number" min="1" max="999">
                                                               </div>
                                                           </div>
                                                       </div>
@@ -85,7 +85,7 @@
                                                           <div class="col-md-12">
                                                               <div class="input-group">
                                                                   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                                  <input name="posizione" required placeholder="Posizione" class="form-control" type="number">
+                                                                  <input name="posizione" required placeholder="Posizione" class="form-control" type="number" min="1">
                                                               </div>
                                                           </div>
                                                       </div>

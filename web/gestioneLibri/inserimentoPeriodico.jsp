@@ -32,7 +32,7 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="codice" required placeholder="Codice*" class="form-control" type="text">
+                                                    <input name="codice" required placeholder="Codice*" class="form-control" type="number">
                                                 </div>
                                             </div>
                                         </div>
@@ -50,7 +50,7 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="edizione" required placeholder="Edizione*" class="form-control" type="text">
+                                                    <input name="edizione" required placeholder="Edizione*" class="form-control" type="number">
                                                 </div>
                                             </div>
                                         </div>
@@ -86,7 +86,7 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="frequenza" required placeholder="Frequenza*" class="form-control" type="text">
+                                                    <input name="frequenza" required placeholder="Frequenza*" class="form-control" type="number">
                                                 </div>
                                             </div>
                                         </div>

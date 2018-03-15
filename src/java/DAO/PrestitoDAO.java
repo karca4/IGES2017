@@ -178,7 +178,6 @@ public class PrestitoDAO extends AbstractDAO<Prestito>{
                 prst.setInt(3, p.getPosCopia());
                 prst.setInt(4, p.getNumTessUtente());
                 
-                System.out.println("Query: " + prst.toString());
                 
                 prst.execute();  
 
